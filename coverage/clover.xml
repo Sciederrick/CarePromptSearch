@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1683813435974" clover="3.2.0">
+  <project timestamp="1683813435975" name="All files">
+    <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="22" coveredelements="22" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1"/>
+    <file name="index.vue" path="C:\Users\pc\WebProjects\CarePromptSearch\pages\index.vue">
+      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="38" count="2" type="stmt"/>
+      <line num="44" count="1" type="stmt"/>
+      <line num="45" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
