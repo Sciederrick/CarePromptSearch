@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'; // this made the difference
-const clickCount = ref(0);
-const clickHandler = () => {
-    clickCount.value = clickCount.value + 1
-}
+
 </script>
 
 <template>
-    <div>
-        <h1>Hello Jest!</h1>
-        <p>{{ clickCount }} clicks</p>
-        <button @click="clickHandler">Click me</button>
-    </div>
+    <main class="px-2 lg:px-16 2xl:container 2xl:mx-auto">
+        <h1 class="text-6xl">CarePrompt Search</h1>
+        <p>Quickly learn obstetric emergency protocols on the go.</p>
+        <MySecondarySearchInput />
+    </main>
 </template>

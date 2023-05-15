@@ -1,6 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer components {
 
+@font-face {
+    font-family: 'IBMPlexSerifBold';
+    src: local("fonts"),
+     url(~/assets/fonts/IBMPlexSerif-Bold.ttf) format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IBMPlexSerifSemiBold';
+    src: local("fonts"),
+     url(~/assets/fonts/IBMPlexSerif-SemiBold.ttf) format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IBMPlexSerifMedium';
+    src: local("fonts"),
+     url(~/assets/fonts/IBMPlexSerif-Medium.ttf) format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'InterRegular';
+    src: local("fonts"),
+     url(~/assets/fonts/Inter-Regular.ttf) format("truetype");
+    font-display: swap;
+}
+
+h1 {
+    font-family: "IBMPlexSerifBold";
+}
+
+h2 {
+    font-family: "IBMPlexSerifSemiBold"; 
+}
+
+h3, h4 {
+    font-family: "IBMPlexSerifMedium"; 
+}
+
+
+body {
+    font-family: "InterRegular", sans-serif;
+}
+
+@layer components {
+    .text-input {
+        @apply px-3 py-2 text-[#a9a9a9] focus:outline-none;
+    }
 }
