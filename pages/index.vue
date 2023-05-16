@@ -37,17 +37,17 @@
 
 
             <ul class="flex gap-x-4 md:flex-col md:gap-y-4">
-                <li class="flex flex-col gap-y-2 rounded border border-[#d9d9d9] p-4 hover:border-blue-500 hover:border-solid hover:bg-blue-500 hover:text-white group "> 
-                    <h2 class="group-hover:text-white text-[#838383] text-xl md:text-4xl">Effortless</h2>
-                    <p class="group-hover:text-white text-sm md:text-lg">Don't make me think, it's an emergency!</p>
+                <li class="flex flex-col gap-y-2 md:rounded md:border md:border-[#d9d9d9] md:p-4 md:hover:border-blue-500 md:hover:border-solid md:hover:bg-blue-500 md:hover:text-white md:group"> 
+                    <h2 class="text-[#838383] text-xl md:text-4xl md:group-hover:text-white">Effortless</h2>
+                    <p class="text-sm md:text-lg md:group-hover:text-white">Don't make me think, it's an emergency!</p>
                 </li>
-                <li class="flex flex-col gap-y-2 rounded border border-[#d9d9d9] p-4 hover:border-blue-500 hover:border-solid hover:bg-blue-500 hover:text-white group ">
-                    <h2 class="group-hover:text-white text-[#838383] text-xl md:text-4xl">Creative</h2>
-                    <p class="group-hover:text-white text-sm md:text-lg">You don't have all the resources, so let's use what you got.</p>
+                <li class="flex flex-col gap-y-2 md:rounded md:border md:border-[#d9d9d9] md:p-4 md:hover:border-blue-500 md:hover:border-solid md:hover:bg-blue-500 md:hover:text-white md:group">
+                    <h2 class="text-[#838383] text-xl md:text-4xl md:group-hover:text-white">Creative</h2>
+                    <p class="text-sm md:text-lg md:group-hover:text-white">You don't have all the resources, so let's use what you got.</p>
                 </li>
-                <li class="flex flex-col gap-y-2 rounded border border-[#d9d9d9] p-4 hover:border-blue-500 hover:border-solid hover:bg-blue-500 hover:text-white group ">
-                    <h2 class="group-hover:text-white text-[#838383] text-xl md:text-4xl">Trusted</h2>
-                    <p class="group-hover:text-white text-sm md:text-lg">Peer-reviewed, proven protocols by fellow medical practitioners.</p>
+                <li class="flex flex-col gap-y-2 md:rounded md:border md:border-[#d9d9d9] md:p-4 md:hover:border-blue-500 md:hover:border-solid md:hover:bg-blue-500 md:hover:text-white md:group">
+                    <h2 class="text-[#838383] text-xl md:text-4xl md:group-hover:text-white">Trusted</h2>
+                    <p class="text-sm md:text-lg md:group-hover:text-white">Peer-reviewed, proven protocols by fellow medical practitioners.</p>
                 </li>
             </ul>
         </section>
