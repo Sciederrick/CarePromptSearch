@@ -30,25 +30,38 @@
     font-display: swap;
 }
 
-h1 {
-    font-family: "IBMPlexSerifBold";
+@layer base {
+    h1 {
+        font-family: "IBMPlexSerifBold";
+    }
+    
+    h2 {
+        font-family: "IBMPlexSerifSemiBold"; 
+    }
+    
+    h3, h4 {
+        font-family: "IBMPlexSerifMedium"; 
+    }    
+    
+    body {
+        font-family: "InterRegular", sans-serif;
+        color: #313131;
+    }
 }
 
-h2 {
-    font-family: "IBMPlexSerifSemiBold"; 
-}
 
-h3, h4 {
-    font-family: "IBMPlexSerifMedium"; 
-}
-
-
-body {
-    font-family: "InterRegular", sans-serif;
-}
 
 @layer components {
     .text-input {
         @apply px-3 py-2 text-[#a9a9a9] focus:outline-none;
+    }
+    .btn {
+        @apply px-3 py-2 rounded-sm;
+    }
+    .btn-gray {
+        @apply bg-[#d9d9d9];
+    }
+    .img-users {
+        @apply object-cover rounded-full border-2 border-[#fff6e7] h-[48px] w-[48px]; 
     }
 }
