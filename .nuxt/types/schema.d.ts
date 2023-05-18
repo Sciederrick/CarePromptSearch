@@ -15,6 +15,12 @@ declare module 'nuxt/schema' {
 
       cdnURL: string,
    },
+
+   typesenseKey: string,
+
+   typesenseHost: string,
+
+   typesensePort: string,
   }
   interface PublicRuntimeConfig {
 

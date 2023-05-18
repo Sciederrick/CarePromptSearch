@@ -15,5 +15,10 @@ export default defineNuxtConfig({
                 { name: 'description', content: 'Easy search for concise obstetric emergency protocols' }
             ]
         }
+    },
+    runtimeConfig: {
+        typesenseKey: process.env.TYPESENSE_KEY,
+        typesenseHost: process.env.TYPESENSE_HOST,
+        typesensePort: process.env.TYPESENSE_PORT
     }
 })

@@ -1,16 +1,3 @@
-<script setup lang="ts">
-    const { useDynamicImages } = useMyUtils();
-    const images = useDynamicImages();
-    console.log(images)
-    const users = ref([
-        {avatar: 'user-1', name: 'John Doe'},
-        {avatar: 'user-2', name: 'John Doe'},
-        {avatar: 'user-3', name: 'John Doe'},
-        {avatar: 'user-2', name: 'John Doe'},
-        {avatar: 'user-1', name: 'John Doe'}
-    ])
-</script>
-
 <template>
     <main class="px-2 lg:px-16 2xl:container 2xl:mx-auto">
         <!-- Hero section -->

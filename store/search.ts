@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useSearchStore = defineStore('search-store', () => {   
     let isMainSearchInputInFocus = ref<boolean>(false);
     let isSecondarySearchInputInFocus = ref<boolean>(false);
+    let searchTerm = ref<string>('');
 
     function addFocusToMainSeachInput() {
         isMainSearchInputInFocus.value = true;
@@ -20,8 +21,13 @@ export const useSearchStore = defineStore('search-store', () => {
         isSecondarySearchInputInFocus.value = false;
     }
 
+    function modifySearchTerm(input: string) {
+        searchTerm.value = input;
+    }
+
     return { 
         isMainSearchInputInFocus, addFocusToMainSeachInput, removeFocusToMainSeachInput,
-        isSecondarySearchInputInFocus, addFocusToSecondarySeachInput, removeFocusToSecondarySeachInput
+        isSecondarySearchInputInFocus, addFocusToSecondarySeachInput, removeFocusToSecondarySeachInput,
+        searchTerm, modifySearchTerm
     };
 });
