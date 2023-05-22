@@ -14,7 +14,6 @@ class TypesenseFactory {
         this._typesensePort = typesensePort;  
         this._typesenseProtocol = typesenseProtocol;
         this._typesenseTimeoutSeconds = typesenseTimeoutSeconds;
-        console.log(this._typesenseHost, this._typesenseKey, this._typesensePort)
     }
 
     initTypesense(): Client {
