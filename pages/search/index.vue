@@ -24,7 +24,8 @@
             <EmptySearch v-else/>
         </section>
         <LoadingWidget class="w-full" v-else/>        
-        <aside class="sticky top-2 inset-x-0 max-h-72 order-2 bg-[#d9d9d9] px-2 py-3 rounded md:order-first md:bg-[#ffffff] flex justify-between md:py-0 md:px-0 md:order-last md:flex-col md:justify-start md:items-center md:gap-y-8 md:py-4">
+        <aside :class="{'invisible': isSearchLoading}"
+            class="sticky top-2 inset-x-0 max-h-72 order-2 bg-[#d9d9d9] px-2 py-3 rounded flex justify-between md:visible md:order-first md:bg-[#ffffff] md:py-0 md:px-0 md:order-last md:flex-col md:justify-start md:items-center md:gap-y-8 md:py-4">
             <div class="flex items-center">
                 <input type="checkbox" id="checkbox" class="h-[20px] w-[20px]" />&nbsp;&nbsp;
                 <label class="text-xs text-[#838383]" for="checkbox"> Select all </label>
