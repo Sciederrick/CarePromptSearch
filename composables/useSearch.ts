@@ -24,9 +24,9 @@ export async function useSearchTreatment() {
         } else {
             throw(data.value?.response||'something went wrong')
         }
-    } catch(e) {
+    } catch(e: any) {
         setSearchLoading(false);
-        const errorAlert:IAlert = { type: IAlertType.Error, msg: `${e}` || "something went wrong" }
+        const errorAlert:IAlert = { type: IAlertType.Error, msg: `${e.message}` || "something went wrong" }
         modifyAlert(errorAlert);
     }
 }
