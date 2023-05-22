@@ -12,19 +12,18 @@ export async function useSearchTreatment() {
     
     const alertStore = useAlertStore();
     const { modifyAlert } = alertStore;
-    const { $api } = useNuxtApp();
 
     const { setSearchLoading } = useToggleStore();
 
     try {
         setSearchLoading(true);
-        const res = await $api.search.searchTreatments({
-            'q': searchTerm.value,
-            'query_by': 'title',
-            'sort_by': 'rating:desc'
-        });
+        const { data } = await useFetch(`/api/search?q=${searchTerm.value}`);
         setSearchLoading(false);
-        populateSearchResult(res);
+        if (data.value?.success) {
+            populateSearchResult(data.value?.response);
+        } else {
+            throw(data.value?.response||'something went wrong')
+        }
     } catch(e) {
         setSearchLoading(false);
         const errorAlert:IAlert = { type: IAlertType.Error, msg: "something went wrong" }

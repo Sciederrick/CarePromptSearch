@@ -6,6 +6,7 @@ import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { provider, isWindows } from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/std-env/dist/index.mjs';
 import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1, createError } from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/h3/dist/index.mjs';
+import { Client } from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/typesense/lib/Typesense.js';
 import { createRenderer } from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import devalue from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/@nuxt/devalue/dist/devalue.mjs';
 import { renderToString } from 'file://C:/Users/pc/WebProjects/CarePromptSearch/node_modules/vue/server-renderer/index.mjs';
@@ -42,13 +43,12 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {
-    "typesenseKey": "L2uUKPQLlkBK5vbrnzR2NtH8fWd3y4yS",
-    "typesenseHost": "5fw8k6jch9oqpv34p-1.a1.typesense.net",
-    "typesensePort": "443",
-    "typesenseProtocol": "https",
-    "typesenseTimeoutSeconds": "2"
-  }
+  "public": {},
+  "typesenseKey": "L2uUKPQLlkBK5vbrnzR2NtH8fWd3y4yS",
+  "typesenseHost": "5fw8k6jch9oqpv34p-1.a1.typesense.net",
+  "typesensePort": "443",
+  "typesenseProtocol": "https",
+  "typesenseTimeoutSeconds": "2"
 };
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _inlineRuntimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
@@ -537,9 +537,11 @@ const errorHandler = (async function errorhandler(error, event) {
   event.node.res.end(await res.text());
 });
 
+const _lazy_2oYkjh = () => Promise.resolve().then(function () { return search$1; });
 const _lazy_uagU8y = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/search', handler: _lazy_2oYkjh, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_uagU8y, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_uagU8y, lazy: true, middleware: false, method: undefined }
 ];
@@ -666,6 +668,44 @@ const template = _template;
 const errorDev = /*#__PURE__*/Object.freeze({
       __proto__: null,
       template: template
+});
+
+const search = defineEventHandler(async (event) => {
+  const { q } = getQuery$1(event);
+  const { typesenseHost, typesensePort, typesenseKey, typesenseProtocol, typesenseTimeoutSeconds } = useRuntimeConfig();
+  try {
+    const client = new Client({
+      "nodes": [{
+        "host": typesenseHost,
+        "port": parseInt(typesensePort),
+        "protocol": typesenseProtocol
+      }],
+      "apiKey": typesenseKey,
+      "connectionTimeoutSeconds": parseInt(typesenseTimeoutSeconds)
+    });
+    if (!(q == null ? void 0 : q.toString().trim()))
+      return;
+    const res = await (client == null ? void 0 : client.collections("treatments").documents().search({
+      "q": q.toString(),
+      "query_by": "title,description,tags",
+      "sort_by": "rating:desc"
+    }));
+    return {
+      success: true,
+      response: res
+    };
+  } catch (e) {
+    console.log("error at init (factory): ", e);
+    return {
+      success: false,
+      response: e
+    };
+  }
+});
+
+const search$1 = /*#__PURE__*/Object.freeze({
+      __proto__: null,
+      default: search
 });
 
 const appRootId = "__nuxt";

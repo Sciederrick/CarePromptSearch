@@ -65,3 +65,11 @@ export interface IRequestParams {
     per_page: number
     q: string
 }
+
+export interface IConfig {
+    host: string,
+    port: number,
+    protocol: string,
+    apiKey: string,
+    timeout: number
+}

@@ -1,10 +1,9 @@
 <script setup lang="ts">
     import { useSearchStore } from '~/store/search';
-    import { useToggleStore } from '~/store/toggle';
     import { storeToRefs } from 'pinia';
     
     const searchStore = useSearchStore();
-    const { addFocusToMainSeachInput, removeFocusToMainSeachInput, modifySearchTerm, populateSearchResult } = searchStore;
+    const { addFocusToMainSeachInput, removeFocusToMainSeachInput, modifySearchTerm } = searchStore;
     let { isMainSearchInputInFocus, searchTerm } = storeToRefs(searchStore);
     let inputSearchTerm = searchTerm;
     const route = useRoute();

@@ -15,8 +15,7 @@ declare module 'nuxt/schema' {
 
       cdnURL: string,
    },
-  }
-  interface PublicRuntimeConfig {
+
    typesenseKey: string,
 
    typesenseHost: string,
@@ -26,6 +25,9 @@ declare module 'nuxt/schema' {
    typesenseProtocol: string,
 
    typesenseTimeoutSeconds: string,
+  }
+  interface PublicRuntimeConfig {
+
   }
 }
 declare module 'vue' {
