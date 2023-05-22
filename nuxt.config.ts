@@ -20,5 +20,5 @@ export default defineNuxtConfig({
         typesenseKey: process.env.TYPESENSE_KEY,
         typesenseHost: process.env.TYPESENSE_HOST,
         typesensePort: process.env.TYPESENSE_PORT
-    }
+    },
 })

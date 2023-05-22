@@ -13,9 +13,9 @@
 </script>
 
 <template>
-    <div class="flex border-b border-[#D9D9D9] py-6 gap-x-2">
+    <div class="flex border-b border-[#D9D9D9] py-6 gap-x-2 md:max-w-xl lg:max-w-4xl">
         <div class="flex flex-col justify-center items-center">
-            <input type="checkbox" id="checkbox" class="h-[20px] w-[20px]" />
+            <input type="checkbox" class="h-[20px] w-[20px]" />
             <br/>
             <button class="btn">
                 <Icon name="material-symbols:share-outline" size="24px" color="#838383" />
