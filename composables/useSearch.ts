@@ -28,6 +28,5 @@ export async function useSearchTreatment() {
         setSearchLoading(false);
         const errorAlert:IAlert = { type: IAlertType.Error, msg: "something went wrong" }
         modifyAlert(errorAlert);
-        console.error(e);
     }
 }
