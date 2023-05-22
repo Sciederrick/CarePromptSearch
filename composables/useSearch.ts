@@ -26,7 +26,7 @@ export async function useSearchTreatment() {
         }
     } catch(e) {
         setSearchLoading(false);
-        const errorAlert:IAlert = { type: IAlertType.Error, msg: "something went wrong" }
+        const errorAlert:IAlert = { type: IAlertType.Error, msg: `${e}` || "something went wrong" }
         modifyAlert(errorAlert);
     }
 }
