@@ -17,8 +17,12 @@ export default defineNuxtConfig({
         }
     },
     runtimeConfig: {
-        typesenseKey: process.env.TYPESENSE_KEY,
-        typesenseHost: process.env.TYPESENSE_HOST,
-        typesensePort: process.env.TYPESENSE_PORT
+        public: {
+            typesenseKey: process.env.TYPESENSE_KEY,
+            typesenseHost: process.env.TYPESENSE_HOST,
+            typesensePort: process.env.TYPESENSE_PORT,
+            typesenseProtocol: process.env.TYPESENSE_PROTOCOL,
+            typesenseTimeoutSeconds: process.env.TYPESENSE_TIMEOUT_SECONDS
+        }
     },
 })
