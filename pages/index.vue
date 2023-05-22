@@ -11,7 +11,7 @@
                     <p class="col-span-2">Quickly learn obstetric emergency protocols on the go.</p>
                     <SocialProof class="lg:hidden"/>
                 </div>
-                <MySecondarySearchInput />
+                <MyMainSearchInput class="md:hidden"/>
                 <div>
                     <button class="hidden lg:block lg:btn lg:btn-gray"><Icon name="akar-icons:search" size="24px" color="#313131"/>&nbsp;Search Now</button>
                 </div>

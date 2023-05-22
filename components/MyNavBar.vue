@@ -4,8 +4,10 @@
 
 <template>
     <nav class="flex justify-between items-center my-4">
-        <img src="" alt="company logo" />
-        <MyMainSearchInput />
+        <NuxtLink to="/">
+            <img src="" alt="company logo" />
+        </NuxtLink>
+        <MyMainSearchInput class="hidden md:block"/>
         <button class="lg:hidden">
             <Icon name="ri:menu-line" size="48px" color="#313131" />
         </button>
