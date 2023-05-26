@@ -12,13 +12,19 @@
 
     const toggleStore = useToggleStore();
     const { isSearchLoading } = storeToRefs(toggleStore);
+
+    function seeResultDetails(position: number) {
+        // TODO: navigate to result details page
+    }
 </script>
 
 <template>
     <main class="px-2 py-2 flex flex-col md:flex-row md:justify-between md:gap-x-8 lg:px-16 2xl:container 2xl:mx-auto">
         <MyMainSearchInput class="pb-8 md:hidden"/>
         <section class="order-last flex flex-col gap-y-8 w-full md:order-first" v-if="!isSearchLoading">
-            <SearchResult v-for="(res, index) in searchResult?.hits" :key="index" v-if="searchResult?.hits && searchResult?.hits.length > 0 &&searchResult.found > 0"
+            <SearchResult v-for="(res, index) in searchResult?.hits" :key="index" 
+                v-if="searchResult?.hits && searchResult?.hits.length > 0 &&searchResult.found > 0"
+                @click="seeResultDetails(index)"
                 :title="res.document.title" :desc="res.document.description" :date="res.document.created_at" />
             <EmptySearchResults v-else-if="searchResult?.hits && searchResult.hits.length == 0"/>
             <EmptySearch v-else/>

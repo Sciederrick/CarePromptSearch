@@ -9,7 +9,7 @@
         <MyAlert :type="alert.type" :msg="alert.msg" />
         <MyNavBar />
     </header>
-    <div class="text-lg">
+    <div>
         <slot/>
     </div>
 </template>
