@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <nav class="flex justify-between items-center my-4">
+    <nav class="flex justify-between items-center my-4 serif">
         <NuxtLink to="/">
             <img src="" alt="company logo" />
         </NuxtLink>

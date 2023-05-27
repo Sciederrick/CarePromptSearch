@@ -13,8 +13,8 @@
     const toggleStore = useToggleStore();
     const { isSearchLoading } = storeToRefs(toggleStore);
 
-    function seeResultDetails(position: number) {
-        // TODO: navigate to result details page
+    async function seeResultDetails(position: number) {
+        await navigateTo(`/search/details/${position}`);
     }
 </script>
 
@@ -24,8 +24,8 @@
         <section class="order-last flex flex-col gap-y-8 w-full md:order-first" v-if="!isSearchLoading">
             <SearchResult v-for="(res, index) in searchResult?.hits" :key="index" 
                 v-if="searchResult?.hits && searchResult?.hits.length > 0 &&searchResult.found > 0"
-                @click="seeResultDetails(index)"
-                :title="res.document.title" :desc="res.document.description" :date="res.document.created_at" />
+                @click="seeResultDetails(index)" class="cursor-pointer"
+                :title="res.document.title" :desc="res.document.description" :date="res.document.updated_at" />
             <EmptySearchResults v-else-if="searchResult?.hits && searchResult.hits.length == 0"/>
             <EmptySearch v-else/>
         </section>

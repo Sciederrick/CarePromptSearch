@@ -24,7 +24,7 @@
         <div class="flex flex-col gap-y-2">
             <h3 class="text-xl md:text-2xl">{{ result.title }}</h3>
             <p>{{ useEllipsize(result.desc, 125) }}</p>
-            <p class="text-xs text-[#838383]">{{ result.date }}</p>
+            <p class="text-xs text-[#838383]">{{ new Date(result.date).toLocaleDateString() }}</p>
         </div>
     </div>
 </template>

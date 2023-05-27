@@ -1,6 +1,28 @@
 <script setup lang="ts">
+    import { storeToRefs } from 'pinia';
+    import { useSearchStore } from '~/store/search';
+    import { IResult } from '~/types/search';
+
     definePageMeta({
         layout: 'search'
+    });
+
+    const { id } = useRoute().params;
+    const searchStore = useSearchStore();
+    const { searchResult, pictorialActiveStepPosition } = storeToRefs(searchStore);
+    let result: IResult;
+    if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
+        result = searchResult.value.hits[parseInt(id as string)].document;
+    }
+
+    const activeStep = computed(() => {
+        return pictorialActiveStepPosition.value + 1;
+    });
+    const activeStepInstruction = computed(() => {
+        return result.protocol[pictorialActiveStepPosition.value + 1].split(':')[0];
+    });
+    const activeStepDescription = computed(() => {
+        return result.protocol[pictorialActiveStepPosition.value + 1].split(':')[1];
     });
 </script>
 
@@ -20,23 +42,24 @@
             </aside>
         </div>
         <section class="py-8 order-first md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8">
-            <div class="flex flex-col items-center gap-y-16 md:items-start">
-                <SearchResultImage v-for="i in 7" />
+            <div class="flex flex-col items-center gap-y-16 md:items-start" v-if="result">
+                <SearchResultImage v-for="(img, index) in result.images" :key="index" 
+                    :img="img" :position="index + 1" :size="result.images.length" :title="result.title" />
             </div>
             <dl class="hidden md:block md:col-span-2 md:px-8 md:h-screen md:sticky md:top-0">
                 <div class="flex gap-x-4 pb-4 lg:max-w-lg"
-                    v-for="(i, index) in 7" :key="index">
+                    v-for="(procedure, index) in result.protocol" :key="index">
                     <dt class="serif text-[--blue700] font-semibold text-xl">{{index + 1}}</dt>
                     <dd>
-                        <span class="font-semibold">Prepare for the procedure:</span>&nbsp;wash your hands, put on sterile gloves, and have necessary equipment ready. 
+                        <span class="font-semibold">{{ procedure.split(':')[0] }}</span>:{{ procedure.split(':')[1] }}
                     </dd>
                 </div>
             </dl>
         </section>
         <dl class="fixed inset-x-0 bottom-0 p-4 backdrop-blur-sm flex justify-center items-center gap-x-8 md:hidden">
-            <dt class="label text-4xl text-[--blue700]">2</dt>
+            <dt class="label text-4xl text-[--blue700]">{{ activeStep }}</dt>
             <dd>
-                <span class="font-semibold">Prepare for the procedure:</span>&nbsp;wash your hands, put on sterile gloves, and have necessary equipment ready.
+                <span class="font-semibold">{{ activeStepInstruction }}</span>:{{ activeStepDescription }}
             </dd>
         </dl>
     </main>

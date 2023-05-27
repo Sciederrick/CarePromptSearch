@@ -2,10 +2,11 @@ import { defineStore } from 'pinia'
 import { SearchResponse } from 'typesense/lib/Typesense/Documents';
 
 export const useSearchStore = defineStore('search-store', () => {   
-    let isMainSearchInputInFocus = ref<boolean>(false);
-    let isSecondarySearchInputInFocus = ref<boolean>(false);
-    let searchTerm = ref<string>('');
+    const isMainSearchInputInFocus = ref<boolean>(false);
+    const isSecondarySearchInputInFocus = ref<boolean>(false);
+    const searchTerm = ref<string>('');
     const searchResult = ref<SearchResponse<any>>();
+    const pictorialActiveStepPosition = ref<number>(0);
 
     function addFocusToMainSeachInput() {
         isMainSearchInputInFocus.value = true;
@@ -31,10 +32,15 @@ export const useSearchStore = defineStore('search-store', () => {
         searchResult.value = res;
     }
 
+    function modifyPictorialActiveStepPosition(position: number) {
+        pictorialActiveStepPosition.value = position;
+    }
+
     return { 
         isMainSearchInputInFocus, addFocusToMainSeachInput, removeFocusToMainSeachInput,
         isSecondarySearchInputInFocus, addFocusToSecondarySeachInput, removeFocusToSecondarySeachInput,
         searchTerm, modifySearchTerm,
-        searchResult, populateSearchResult
+        searchResult, populateSearchResult,
+        pictorialActiveStepPosition, modifyPictorialActiveStepPosition
     };
 });

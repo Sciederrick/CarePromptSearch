@@ -28,7 +28,7 @@ export interface IResult {
     created_at: number
     description: string
     id: string
-    images: any[]
+    images: string[]
     protocol: string[]
     rating: number
     tags: string[]
