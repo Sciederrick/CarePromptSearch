@@ -44,10 +44,10 @@
         <section class="py-8 order-first md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8">
             <div class="flex flex-col items-center gap-y-16 md:items-start" v-if="result">
                 <SearchResultImage v-for="(img, index) in result.images" :key="index" 
-                    :img="img" :position="index + 1" :size="result.images.length" :title="result.title" />
+                    :img="img" :position="index + 1" :size="result.images.length" :title="result.title" :is-active="index == pictorialActiveStepPosition" />
             </div>
             <dl class="hidden md:block md:col-span-2 md:px-8 md:h-screen md:sticky md:top-0">
-                <div class="flex gap-x-4 pb-4 lg:max-w-lg"
+                <div :class="[ pictorialActiveStepPosition == index ? 'opacity-100' : 'opacity-30' ]" class="flex gap-x-4 pb-4 lg:max-w-lg"
                     v-for="(procedure, index) in result.protocol" :key="index">
                     <dt class="serif text-[--blue700] font-semibold text-xl">{{index + 1}}</dt>
                     <dd>
