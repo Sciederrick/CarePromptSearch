@@ -11,13 +11,14 @@
     const searchStore = useSearchStore();
     const { searchResult, pictorialActiveStepPosition } = storeToRefs(searchStore);
     const { modifyPictorialActiveStepPosition } = searchStore;
+    const visiblePictorials = ref<Set<number>>(new Set());
     let result: IResult;
     if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
         result = searchResult.value.hits[parseInt(id as string)].document;
     }
 
     const activeStep = computed(() => {
-        return pictorialActiveStepPosition.value + 1;
+        return parseInt(pictorialActiveStepPosition.value) + 1;
     });
     const activeStepInstruction = computed(() => {
         return result.protocol[pictorialActiveStepPosition.value].split(':')[0];
@@ -31,6 +32,44 @@
             modifyPictorialActiveStepPosition(position);
         }
     }
+
+    function modifyActivePictorial(scrollDirection:string) {
+        const isActivePictorialVisible = visiblePictorials.value.has(pictorialActiveStepPosition.value);
+        if (!isActivePictorialVisible) {
+            const smallestVisibleItem = getSmallestVisibleItem();
+            const largestVisibleItem = getLargestVisibleItem();
+            if (smallestVisibleItem > -1 && scrollDirection == 'down') {
+                makeActive(smallestVisibleItem);
+            } else if (largestVisibleItem != Infinity && scrollDirection == 'up') {
+                makeActive(largestVisibleItem);
+            }
+        }
+    }
+
+    function getSmallestVisibleItem() :number {
+        let smallestVisibleItem:number = -1;
+        visiblePictorials.value.forEach((el:number) => {
+            if (smallestVisibleItem == -1 || smallestVisibleItem > el) smallestVisibleItem = el;
+        });
+        return smallestVisibleItem;
+    }
+
+    function getLargestVisibleItem() :number {
+        let largestVisibleItem:number = Infinity;
+        visiblePictorials.value.forEach((el:number) => {
+            if (largestVisibleItem == Infinity || largestVisibleItem < el) largestVisibleItem = el;
+        });
+        return largestVisibleItem;
+    }
+
+    function modifyPictorialSet(target:any) {
+        if (target.status) { 
+            visiblePictorials.value.add(target.id);
+        } else {
+            visiblePictorials.value.delete(target.id);
+        }
+    }
+
 </script>
 
 <template>
@@ -50,7 +89,7 @@
         </div>
         <section class="py-8 order-first mb-32 md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8">
             <div class="flex flex-col items-center gap-y-16 md:items-start" v-if="result">
-                <SearchResultImage v-for="(img, index) in result.images" :key="index" 
+                <SearchResultImage v-for="(img, index) in result.images" :key="index" data-observed="true" :id="index"
                     :img="img" :position="index" :size="result.images.length" :title="result.title" :is-active="index == pictorialActiveStepPosition" />
             </div>
             <dl class="hidden md:block md:col-span-2 md:px-8 md:h-screen md:sticky md:top-0">
@@ -69,5 +108,7 @@
                 <span class="font-semibold">{{ activeStepInstruction }}</span>:{{ activeStepDescription }}
             </dd>
         </dl>
+        <MyIntersectionObserver @intersecting="modifyPictorialSet($event)" />
+        <MyPageScrollTracker @handle-visible-target="modifyActivePictorial($event)" />
     </main>
 </template>
