@@ -10,6 +10,7 @@
     const { id } = useRoute().params;
     const searchStore = useSearchStore();
     const { searchResult, pictorialActiveStepPosition } = storeToRefs(searchStore);
+    const { modifyPictorialActiveStepPosition } = searchStore;
     let result: IResult;
     if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
         result = searchResult.value.hits[parseInt(id as string)].document;
@@ -24,6 +25,12 @@
     const activeStepDescription = computed(() => {
         return result.protocol[pictorialActiveStepPosition.value + 1].split(':')[1];
     });
+
+    function makeActive(position:number) {
+        if (pictorialActiveStepPosition.value != position) {
+            modifyPictorialActiveStepPosition(position);
+        }
+    }
 </script>
 
 <template>
@@ -41,15 +48,15 @@
                 <SearchResultActions />
             </aside>
         </div>
-        <section class="py-8 order-first md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8">
+        <section class="py-8 order-first mb-32 md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8">
             <div class="flex flex-col items-center gap-y-16 md:items-start" v-if="result">
                 <SearchResultImage v-for="(img, index) in result.images" :key="index" 
-                    :img="img" :position="index + 1" :size="result.images.length" :title="result.title" :is-active="index == pictorialActiveStepPosition" />
+                    :img="img" :position="index" :size="result.images.length" :title="result.title" :is-active="index == pictorialActiveStepPosition" />
             </div>
             <dl class="hidden md:block md:col-span-2 md:px-8 md:h-screen md:sticky md:top-0">
-                <div :class="[ pictorialActiveStepPosition == index ? 'opacity-100' : 'opacity-30' ]" class="flex gap-x-4 pb-4 lg:max-w-lg"
-                    v-for="(procedure, index) in result.protocol" :key="index">
-                    <dt class="serif text-[--blue700] font-semibold text-xl">{{index + 1}}</dt>
+                <div :class="[ pictorialActiveStepPosition == index ? 'opacity-100' : 'opacity-30' ]" class="flex gap-x-4 pb-4 cursor-pointer lg:max-w-lg"
+                    v-for="(procedure, index) in result.protocol" :key="index" @click="makeActive(index)">
+                    <dt class="serif text-[--blue700] font-semibold text-xl">{{ index + 1 }}</dt>
                     <dd>
                         <span class="font-semibold">{{ procedure.split(':')[0] }}</span>:{{ procedure.split(':')[1] }}
                     </dd>
