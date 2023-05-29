@@ -20,10 +20,10 @@
         return pictorialActiveStepPosition.value + 1;
     });
     const activeStepInstruction = computed(() => {
-        return result.protocol[pictorialActiveStepPosition.value + 1].split(':')[0];
+        return result.protocol[pictorialActiveStepPosition.value].split(':')[0];
     });
     const activeStepDescription = computed(() => {
-        return result.protocol[pictorialActiveStepPosition.value + 1].split(':')[1];
+        return result.protocol[pictorialActiveStepPosition.value].split(':')[1];
     });
 
     function makeActive(position:number) {
@@ -34,10 +34,10 @@
 </script>
 
 <template>
-    <main class="p-2 md:relative md:flex md:justify-between lg:px-16 2xl:container">
+    <main class="p-2 relative md:flex md:justify-between lg:px-16 2xl:container">
         <MyMainSearchInput class="pb-4 md:hidden"/>
-        <div class="md:sticky md:top-0 md:h-screen md:pt-2">
-            <nav class="pt-1 bg-[--blue100] rounded-sm sticky top-0 inset-x-0 z-10 md:static md:pt-0">
+        <div class="sticky top-0 z-10 md:h-screen md:pt-2">
+            <nav class="pt-1 bg-[--blue100] rounded-sm md:pt-0">
                 <ul class="w-full p-2 pb-0 flex justify-between text-sm serif md:text-base md:flex-col md:pb-2">
                     <li class="border-b-4 border-b-[--blue900] md:border-b-[0.5px] md:py-4 md:border-b-[--gray100] md:text-[--blue700]">Protocol</li>
                     <li class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-b-[--gray100] md:border-b-[0.5px] md:py-4">Decision matrix</li>

@@ -24,7 +24,7 @@
 </script>
 
 <template>
-    <div class="relative" @click="makeActive">
+    <div class="relative cursor-pointer" @click="makeActive">
         <img :class="[ isActive ? 'border-[--blue900]' : 'border-[--gray100]' ]" class="object-cover img-container"
             src="~/assets/images/bimanual-uterine-massage.png" :alt="`image ${positionTitle} showcasing ${title}`" />
         <div :class="[ isActive ? 'bg-[--blue900] text-white' : 'bg-[--gray100]' ]"
