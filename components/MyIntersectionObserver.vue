@@ -7,7 +7,7 @@ let targetId;
 onMounted(() => {
     const options = {
         root: null,
-        rootMargin: "-15px",
+        rootMargin: "-100px 0px -200px 0px", // shrink the size of the root element vertically
         threshold: 0,
     }
     observer = new IntersectionObserver((entries, observer) => {
