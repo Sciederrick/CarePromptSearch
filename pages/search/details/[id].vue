@@ -35,7 +35,9 @@
 
     function modifyActivePictorial(scrollDirection:string) {
         const isActivePictorialVisible = visiblePictorials.value.has(pictorialActiveStepPosition.value);
+        console.log(pictorialActiveStepPosition.value,' - ', Array.from(visiblePictorials.value), isActivePictorialVisible)
         if (!isActivePictorialVisible) {
+            console.log(`${pictorialActiveStepPosition.value} is not visible`);
             const smallestVisibleItem = getSmallestVisibleItem();
             const largestVisibleItem = getLargestVisibleItem();
             if (smallestVisibleItem > -1 && scrollDirection == 'down') {
@@ -64,9 +66,9 @@
 
     function modifyPictorialSet(target:any) {
         if (target.status) { 
-            visiblePictorials.value.add(target.id);
+            visiblePictorials.value.add(parseInt(target.id));
         } else {
-            visiblePictorials.value.delete(target.id);
+            visiblePictorials.value.delete(parseInt(target.id));
         }
     }
 
