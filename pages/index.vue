@@ -143,5 +143,50 @@
         </div>
       </div>
     </section>
+    <!-- Testimonials -->
+    <section class="py-24 limit-width">
+      <h2 class="heading-2 text-center">Testimonials</h2>
+
+      <div
+        class="gap-x-8 py-8 overflow-x-auto flex md:justify-between snap-x scroll-smooth"
+      >
+        <div
+          class="grid gap-y-4 min-w-[300px] md:min-w-[0px]"
+          v-for="i in 3"
+          :key="i"
+        >
+          <blockquote>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque
+            omnis vitae impedit laboriosam quas similique placeat deserunt
+            quisquam quaerat explicabo.
+          </blockquote>
+
+          <div class="flex items-center gap-4">
+            <img
+              src="~/assets/images/doctor.webp"
+              width="50"
+              height="50"
+              class="rounded-full object-cover w-[45px] h-[45px]"
+              alt=""
+            />
+            <ul class="text-xs">
+              <li class="pb-1">Dr. Jane Doe</li>
+              <li>Medical Doctor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="flex justify-end gap-4 md:hidden">
+        <li>
+          <div class="w-8 h-3 rounded-sm bg-[--blue700]"></div>
+        </li>
+        <li>
+          <div class="w-4 h-3 rounded-sm bg-[--gray600]"></div>
+        </li>
+        <li>
+          <div class="w-4 h-3 rounded-sm bg-[--gray600]"></div>
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
