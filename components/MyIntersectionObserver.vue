@@ -15,15 +15,9 @@ onMounted(() => {
             targetId = entry.target.getAttribute("id");
             if (entry && entry.isIntersecting) {
                 observedTargets.push(targetId);
-                console.log(`${targetId} visible`);
                 emit('intersecting', { element: entry.target, id: targetId, status: true });
             } else {
-                console.log("not intersecting", targetId)
-                emit('intersecting', { element: entry.target, id: targetId, status: false });
-                // if (observedTargets.length > 0 && observedTargets.find(target => target == entry.target.getAttribute("id")) != undefined) {
-                //     observer.unobserve(entry.target)
-                // }
-                    
+                emit('intersecting', { element: entry.target, id: targetId, status: false });                  
             }
         })           
     }, options)

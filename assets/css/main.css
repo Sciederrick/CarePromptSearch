@@ -3,96 +3,100 @@
 @tailwind utilities;
 
 :root {
-    --dark: #313131;
-    --gray600: #838383;
-    --gray500: #A9A9A9;
-    --gray400: #D9D9D9;
-    --gray100: #E1E1E1;
-    --blue900: #0099CC;
-    --blue700: #00BFFF;
-    --blue400: #BFE5F2;
-    --blue300: #D9F0F7;
-    --blue100: #F2FAFC;
+  --dark: #313131;
+  --gray600: #838383;
+  --gray500: #a9a9a9;
+  --gray400: #d9d9d9;
+  --gray100: #e1e1e1;
+  --blue900: #0099cc;
+  --blue700: #00bfff;
+  --blue400: #bfe5f2;
+  --blue300: #d9f0f7;
+  --blue100: #f2fafc;
 }
 
 @font-face {
-    font-family: 'IBMPlexSerifBold';
-    src: local("fonts"),
-     url(~/assets/fonts/IBMPlexSerif-Bold.ttf) format("truetype");
-    font-display: swap;
+  font-family: "IBMPlexSerifBold";
+  src: local("fonts"),
+    url(~/assets/fonts/IBMPlexSerif-Bold.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'IBMPlexSerifSemiBold';
-    src: local("fonts"),
-     url(~/assets/fonts/IBMPlexSerif-SemiBold.ttf) format("truetype");
-    font-display: swap;
+  font-family: "IBMPlexSerifSemiBold";
+  src: local("fonts"),
+    url(~/assets/fonts/IBMPlexSerif-SemiBold.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'IBMPlexSerifMedium';
-    src: local("fonts"),
-     url(~/assets/fonts/IBMPlexSerif-Medium.ttf) format("truetype");
-    font-display: swap;
+  font-family: "IBMPlexSerifMedium";
+  src: local("fonts"),
+    url(~/assets/fonts/IBMPlexSerif-Medium.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'IBMPlexSerifRegular';
-    src: local("fonts"),
-     url(~/assets/fonts/IBMPlexSerif-Regular.ttf) format("truetype");
-    font-display: swap;
+  font-family: "IBMPlexSerifRegular";
+  src: local("fonts"),
+    url(~/assets/fonts/IBMPlexSerif-Regular.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'InterRegular';
-    src: local("fonts"),
-     url(~/assets/fonts/Inter-Regular.ttf) format("truetype");
-    font-display: swap;
+  font-family: "InterRegular";
+  src: local("fonts"), url(~/assets/fonts/Inter-Regular.ttf) format("truetype");
+  font-display: swap;
 }
 
 @layer base {
-    h1 {
-        font-family: "IBMPlexSerifBold";
-    }
-    
-    h2 {
-        font-family: "IBMPlexSerifSemiBold"; 
-    }
-    
-    h3, h4 {
-        font-family: "IBMPlexSerifMedium"; 
-    }    
-    
-    html {
-        font-family: "InterRegular", sans-serif;
-        color: var(--dark);
-    }
+  h1 {
+    font-family: "IBMPlexSerifBold";
+  }
 
-    .label {
-       font-family: "IBMPlexSerifMedium"; 
-    }
+  h2 {
+    font-family: "IBMPlexSerifSemiBold";
+  }
 
-    .serif {
-        font-family: "IBMPlexSerifRegular";
-    }
+  h3,
+  h4 {
+    font-family: "IBMPlexSerifMedium";
+  }
+
+  html {
+    font-family: "InterRegular", sans-serif;
+    color: var(--dark);
+  }
+
+  .label {
+    font-family: "IBMPlexSerifMedium";
+  }
+
+  .serif {
+    font-family: "IBMPlexSerifRegular";
+  }
 }
 
-
-
 @layer components {
-    .text-input {
-        @apply px-3 py-2 text-[#a9a9a9] focus:outline-none;
-    }
-    .btn {
-        @apply px-3 py-2 rounded-sm;
-    }
-    .btn-gray {
-        @apply bg-[#d9d9d9];
-    }
-    .img-users {
-        @apply object-cover rounded-full border-2 border-[#fff6e7] h-[48px] w-[48px]; 
-    }
-    .img-container {
-        @apply w-[200px] h-[200px] border-4 border-dashed rounded-xl lg:w-[320px] lg:h-[320px];
-    }
+  .text-input {
+    @apply px-3 py-2 text-[#a9a9a9] focus:outline-none;
+  }
+  .btn {
+    @apply px-3 py-2 rounded-sm;
+  }
+  .btn-gray {
+    @apply bg-[#d9d9d9];
+  }
+  .btn-blue {
+    @apply bg-[--blue900] text-white hover:bg-[--blue700];
+  }
+  .btn-transparent-blue {
+    @apply hover:bg-[--blue900] hover:text-white;
+  }
+  .img-users {
+    @apply object-cover rounded-full border-2 border-[#fff6e7] h-[48px] w-[48px];
+  }
+  .img-container {
+    @apply w-[200px] h-[200px] border-4 border-dashed rounded-xl lg:w-[320px] lg:h-[320px];
+  }
 }

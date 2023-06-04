@@ -1,29 +1,29 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <nav class="flex justify-between items-center my-4 serif">
-        <NuxtLink to="/">
-            <img src="" alt="company logo" />
-        </NuxtLink>
-        <MyMainSearchInput class="hidden md:block"/>
-        <button class="lg:hidden">
-            <Icon name="ri:menu-line" size="48px" color="#313131" />
-        </button>
-        <ul class="hidden lg:flex lg:justify-between lg:justify-self-center">
-            <li class="lg:pr-4 lg:block lg:border-r lg:border-r-1 lg:border-[#898989]">
-                <NuxtLink class="btn btn-border-underline"
-                    to="/">Home</NuxtLink>
-            </li>
-            <li class="lg:px-4 lg:block lg:border-r lg:border-r-1 lg:border-[#898989]">
-                <NuxtLink class="btn btn-border-underline"
-                    to="/search">Search</NuxtLink>
-            </li>            
-            <li class="lg:pl-4">
-                <NuxtLink class="btn btn-border-underline"
-                    to="/about">About</NuxtLink>
-            </li>
-        </ul>
-    </nav>
+  <nav
+    class="pb-3 flex justify-between items-center my-4 border-b border-b-1 border-[--gray100]"
+  >
+    <NuxtLink to="/">
+      <img
+        src="~/assets/images/logo-black-transparent.png"
+        width="175"
+        alt="company logo"
+      />
+    </NuxtLink>
+    <!-- <MyMainSearchInput class="hidden md:block" /> -->
+    <button class="lg:hidden">
+      <Icon name="ri:menu-line" size="48px" color="#313131" />
+    </button>
+    <ul class="hidden lg:flex lg:justify-between lg:justify-self-center">
+      <li
+        class="lg:pr-4 lg:block lg:border-r lg:border-r-1 lg:border-[--gray100]"
+      >
+        <NuxtLink class="btn btn-transparent-blue" to="/">contribute</NuxtLink>
+      </li>
+      <li class="lg:pl-4">
+        <NuxtLink class="btn btn-transparent-blue" to="/about">login</NuxtLink>
+      </li>
+    </ul>
+  </nav>
 </template>

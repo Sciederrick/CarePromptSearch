@@ -35,7 +35,6 @@
 
     function modifyActivePictorial(scrollDirection:string) {
         const isActivePictorialVisible = visiblePictorials.value.has(pictorialActiveStepPosition.value);
-        console.log(pictorialActiveStepPosition.value,' - ', Array.from(visiblePictorials.value), isActivePictorialVisible)
         if (!isActivePictorialVisible) {
             console.log(`${pictorialActiveStepPosition.value} is not visible`);
             const smallestVisibleItem = getSmallestVisibleItem();
