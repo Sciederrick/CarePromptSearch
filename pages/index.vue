@@ -127,7 +127,7 @@
       <div class="max-w-lg mx-auto text-center grid gap-y-4 pb-24">
         <SocialProof2 />
         <h2 class="heading-2">
-          Welcoming creative contributors to grwo our knowledge repository.
+          Welcoming creative contributors to grow our knowledge repository.
         </h2>
         <p>
           Creating medical protocols is no mean task. We are looking for

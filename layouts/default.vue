@@ -51,14 +51,14 @@
         </p>
         <form class="pt-1">
           <div
-            class="inline-block border border-[--gray400] px-1 py-1 rounded-sm bg-[--blue300]"
+            class="grid border border-[--gray400] px-1 py-1 rounded-sm bg-[--blue300] md:inline-block"
           >
             <input
               class="px-3 outline-none bg-transparent"
               type="email"
               placeholder="Your email address"
             />
-            <button class="btn btn-blue">Subscribe</button>
+            <button class="btn btn-blue mt-2 md:mt-0">Subscribe</button>
           </div>
         </form>
       </section>
