@@ -4,14 +4,14 @@
 </script>
 
 <template>
-  <header class="px-2 lg:px-16 2xl:container 2xl:mx-auto">
+  <header class="limit-width">
     <MyAlert :type="alert.type" :msg="alert.msg" />
     <MyNavBar />
   </header>
   <div>
     <slot />
   </div>
-  <footer class="bg-[--blue300] py-8 px-2 lg:px-16 2xl:container 2xl:mx-auto">
+  <footer class="bg-[--blue300] py-8 limit-width">
     <div class="flex flex-col flex-wrap gap-8 md:flex-row md:gap-12">
       <NuxtLink to="/">
         <img
