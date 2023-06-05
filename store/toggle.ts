@@ -1,12 +1,17 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useToggleStore = defineStore('toggle-store', () => {
-    const isSearchLoading = ref(false);
+export const useToggleStore = defineStore("toggle-store", () => {
+  const isSearchLoading = ref(false);
+  const isShareModal = ref(false);
 
-    function setSearchLoading(state: boolean) {
-        if (state == isSearchLoading.value) return;
-        isSearchLoading.value = state;
-    }
+  function setSearchLoading(state: boolean) {
+    if (state == isSearchLoading.value) return;
+    isSearchLoading.value = state;
+  }
 
-    return { isSearchLoading, setSearchLoading };
+  function toggleShareModal() {
+    isShareModal.value = !isShareModal.value;
+  }
+
+  return { isSearchLoading, setSearchLoading, isShareModal, toggleShareModal };
 });

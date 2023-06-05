@@ -91,6 +91,9 @@
   .btn-blue {
     @apply bg-[--blue900] text-white hover:bg-[--blue700];
   }
+  .btn-hover-blue {
+    @apply text-[--gray600] hover:text-[--blue900] active:text-[--blue900];
+  }
   .btn-transparent-blue {
     @apply hover:bg-[--blue900] hover:text-white;
   }

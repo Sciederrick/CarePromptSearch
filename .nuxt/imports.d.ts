@@ -5,5 +5,6 @@ export { withCtx, withDirectives, withKeys, withMemo, withModifiers, withScopeId
 export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerSeoMeta, useServerHeadSafe } from '@unhead/vue';
 export { useMyUtils } from '../composables/useMyUtils';
 export { useSearchTreatment } from '../composables/useSearch';
+export { useToggleShareModal } from '../composables/useToggleShareModal';
 export { usePinia } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
