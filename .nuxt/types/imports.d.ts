@@ -102,6 +102,7 @@ declare global {
   const useRoute: typeof import('../../node_modules/nuxt/dist/app')['useRoute']
   const useRouter: typeof import('../../node_modules/nuxt/dist/app')['useRouter']
   const useRuntimeConfig: typeof import('../../node_modules/nuxt/dist/app')['useRuntimeConfig']
+  const useSaveProtocols: typeof import('../../composables/useSaveProtocols')['useSaveProtocols']
   const useSearchTreatment: typeof import('../../composables/useSearch')['useSearchTreatment']
   const useSeoMeta: typeof import('@unhead/vue')['useSeoMeta']
   const useServerHead: typeof import('@unhead/vue')['useServerHead']
@@ -109,7 +110,6 @@ declare global {
   const useServerSeoMeta: typeof import('@unhead/vue')['useServerSeoMeta']
   const useSlots: typeof import('vue')['useSlots']
   const useState: typeof import('../../node_modules/nuxt/dist/app')['useState']
-  const useToggleShareModal: typeof import('../../composables/useToggleShareModal')['useToggleShareModal']
   const useTransitionState: typeof import('vue')['useTransitionState']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
@@ -230,6 +230,7 @@ declare module 'vue' {
     readonly useRoute: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRouter']>
     readonly useRuntimeConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRuntimeConfig']>
+    readonly useSaveProtocols: UnwrapRef<typeof import('../../composables/useSaveProtocols')['useSaveProtocols']>
     readonly useSearchTreatment: UnwrapRef<typeof import('../../composables/useSearch')['useSearchTreatment']>
     readonly useSeoMeta: UnwrapRef<typeof import('@unhead/vue')['useSeoMeta']>
     readonly useServerHead: UnwrapRef<typeof import('@unhead/vue')['useServerHead']>
@@ -237,7 +238,6 @@ declare module 'vue' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('@unhead/vue')['useServerSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useState']>
-    readonly useToggleShareModal: UnwrapRef<typeof import('../../composables/useToggleShareModal')['useToggleShareModal']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

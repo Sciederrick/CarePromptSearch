@@ -43,7 +43,9 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {},
+  "public": {
+    "baseURL": "https://care-prompt-search.vercel.app"
+  },
   "typesenseKey": "L2uUKPQLlkBK5vbrnzR2NtH8fWd3y4yS",
   "typesenseHost": "5fw8k6jch9oqpv34p-1.a1.typesense.net",
   "typesensePort": "443",

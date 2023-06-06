@@ -19,7 +19,7 @@
   }
 
   const activeStep = computed(() => {
-    return parseInt(pictorialActiveStepPosition.value) + 1;
+    return pictorialActiveStepPosition.value + 1;
   });
   const activeStepInstruction = computed(() => {
     return result.protocol[pictorialActiveStepPosition.value].split(":")[0];
@@ -103,7 +103,9 @@
         </ul>
       </nav>
       <aside class="hidden md:block md:mt-10">
-        <SearchResultActions />
+        <div class="flex flex-col md:flex-row md:gap-x-8 md:gap-y-0">
+          <SearchResultActions />
+        </div>
       </aside>
     </div>
     <section

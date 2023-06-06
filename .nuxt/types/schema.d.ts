@@ -27,7 +27,7 @@ declare module 'nuxt/schema' {
    typesenseTimeoutSeconds: string,
   }
   interface PublicRuntimeConfig {
-
+   baseURL: string,
   }
 }
 declare module 'vue' {

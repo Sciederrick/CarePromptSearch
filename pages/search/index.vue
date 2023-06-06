@@ -60,14 +60,7 @@
       <div
         class="hidden md:border md:border-[#d9d9d9] md:rounded md:flex md:flex-col lg:flex-row"
       >
-        <button class="btn btn-hover-blue">
-          <Icon name="material-symbols:bookmark-outline-rounded" size="24px" />
-          &nbsp;Save
-        </button>
-        <button class="btn btn-hover-blue" @click="useToggleShareModal">
-          <Icon name="material-symbols:share-outline" size="24px" />
-          &nbsp;Share
-        </button>
+        <SearchResultActions />
       </div>
       <p class="hidden md:block md:text-xs">0 selected</p>
       <button class="md:hidden">

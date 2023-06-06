@@ -1,13 +1,25 @@
 <script setup lang="ts">
-  const linksToShare = ref("1 2 3");
+  import { storeToRefs } from "pinia";
+  import { useToggleStore } from "~/store/toggle";
+  import { useProtocolStore } from "~/store/protocol";
+
+  const { toggleShareModal } = useToggleStore();
+  const protocolStore = useProtocolStore();
+  const { protocols } = storeToRefs(protocolStore);
+  const { baseURL } = useRuntimeConfig().public;
+
+  let mLinksToShare = protocols.value.map((id) =>
+    baseURL.concat(`/search/${id}`)
+  );
+  let linksToShare = ref(mLinksToShare.join(" "));
   let isCopiedToClipboard = ref(false);
 
-  const isMultipleLinks = computed(() => {
-    return linksToShare.value.split(" ").length > 1 ? true : false;
+  const numLinks = computed(() => {
+    return linksToShare.value.split(" ").length;
   });
 
   const thisOrThese = computed(() => {
-    return isMultipleLinks.value ? "these" : "this";
+    return numLinks.value > 1 ? "these" : "this";
   });
 
   function copyToClipBoard() {
@@ -21,8 +33,8 @@
   <div class="fixed inset-0 backdrop-blur-sm backdrop-opacity-95 bg-white/30">
     <div class="max-w-md h-72 mx-auto mt-32 bg-white rounded-sm shadow-lg p-8">
       <header class="flex justify-between items-center">
-        <p>Share 2 Items via:</p>
-        <button @click="useToggleShareModal">
+        <p>Share {{ numLinks }} item{{ numLinks > 1 ? "s" : "" }} via:</p>
+        <button @click="toggleShareModal">
           <Icon name="uiw:close-square-o" size="24" />
         </button>
       </header>
@@ -61,7 +73,7 @@
         >
           <span v-if="!isCopiedToClipboard">{{ linksToShare }}</span>
           <span v-else
-            >Link{{ isMultipleLinks ? "s" : "" }} copied to clipboard!</span
+            >Link{{ numLinks > 1 ? "s" : "" }} copied to clipboard!</span
           >
         </div>
         <button
