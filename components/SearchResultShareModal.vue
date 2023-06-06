@@ -1,3 +1,22 @@
+<script setup lang="ts">
+  const linksToShare = ref("1 2 3");
+  let isCopiedToClipboard = ref(false);
+
+  const isMultipleLinks = computed(() => {
+    return linksToShare.value.split(" ").length > 1 ? true : false;
+  });
+
+  const thisOrThese = computed(() => {
+    return isMultipleLinks.value ? "these" : "this";
+  });
+
+  function copyToClipBoard() {
+    useMyUtils().copyTextToClipboard(linksToShare.value);
+    isCopiedToClipboard.value = true;
+    setTimeout(() => (isCopiedToClipboard.value = false), 5000);
+  }
+</script>
+
 <template>
   <div class="fixed inset-0 backdrop-blur-sm backdrop-opacity-95 bg-white/30">
     <div class="max-w-md h-72 mx-auto mt-32 bg-white rounded-sm shadow-lg p-8">
@@ -7,27 +26,49 @@
           <Icon name="uiw:close-square-o" size="24" />
         </button>
       </header>
-      <div class="flex justify-between gap-4 py-8 text-[--gray600]">
-        <button class="py-2 flex flex-col items-center">
+      <div class="flex justify-center gap-x-16 py-8 text-[--gray600]">
+        <NuxtLink
+          :to="`mailto:?subject=I wanted you to see ${thisOrThese} protocols &amp;body=${linksToShare}`"
+          target="_blank"
+          title="Share by Email"
+          class="flex flex-col items-center btn btn-hover-blue"
+        >
           <Icon name="material-symbols:alternate-email-rounded" size="48px" />
           <span class="text-xs">Email</span>
-        </button>
-        <button class="py-2 flex flex-col items-center">
+        </NuxtLink>
+        <NuxtLink
+          :to="`https://api.whatsapp.com/send?text=${linksToShare}/`"
+          target="_blank"
+          data-action="share/whatsapp/share"
+          title="Share by Whatsapp"
+          class="flex flex-col items-center btn btn-hover-blue"
+        >
           <Icon name="ri:whatsapp-line" size="48px" />
           <span class="text-xs">Whatsapp</span>
-        </button>
-        <button class="py-2 flex flex-col items-center">
-          <Icon name="jam:linkedin-circle" size="48px" />
-          <span class="text-xs">Linkedin</span>
-        </button>
+        </NuxtLink>
       </div>
       <div
-        class="flex justify-between border border-[--gray400] p-2 rounded-md bg-[--blue300]"
+        :class="[
+          isCopiedToClipboard
+            ? 'bg-[--alertSuccess] text-white'
+            : 'bg-[--blue300]',
+        ]"
+        class="flex justify-between border border-[--gray400] p-2 rounded-md"
       >
-        <div class="px-3 text-xs grid place-items-center">
-          https://care-prompt-search/example/3
+        <div
+          :class="[isCopiedToClipboard ? 'text-base' : 'text-xs']"
+          class="px-3 grid place-items-center"
+        >
+          <span v-if="!isCopiedToClipboard">{{ linksToShare }}</span>
+          <span v-else
+            >Link{{ isMultipleLinks ? "s" : "" }} copied to clipboard!</span
+          >
         </div>
-        <button class="btn btn-blue rounded-lg mt-2 md:mt-0">
+        <button
+          :class="[isCopiedToClipboard ? '' : 'btn-blue']"
+          class="btn rounded-lg mt-2 md:mt-0"
+          @click="copyToClipBoard"
+        >
           <Icon name="carbon:copy" size="24" class="text-white" />
         </button>
       </div>

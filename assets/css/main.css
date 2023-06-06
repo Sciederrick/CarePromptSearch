@@ -13,6 +13,14 @@
   --blue400: #bfe5f2;
   --blue300: #d9f0f7;
   --blue100: #f2fafc;
+  --bgAlertSuccess: #f0fdf4;
+  --alertSuccess: #54e087;
+  --bgAlertError: #fef2f2;
+  --alertError: #f87171;
+  --bgAlertInfo: #eff6ff;
+  --alertInfo: #60a5fa;
+  --bgAlertWarning: #fefce8;
+  --alertWarning: #facc15;
 }
 
 @font-face {
