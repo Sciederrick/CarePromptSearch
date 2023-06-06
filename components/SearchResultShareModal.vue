@@ -33,7 +33,7 @@
   <div class="fixed inset-0 backdrop-blur-sm backdrop-opacity-95 bg-white/30">
     <div class="max-w-md h-72 mx-auto mt-32 bg-white rounded-sm shadow-lg p-8">
       <header class="flex justify-between items-center">
-        <p>Share {{ numLinks }} item{{ numLinks > 1 ? "s" : "" }} via:</p>
+        <p>Share {{ numLinks }} protocol{{ numLinks > 1 ? "s" : "" }} via:</p>
         <button @click="toggleShareModal">
           <Icon name="uiw:close-square-o" size="24" />
         </button>
@@ -71,7 +71,9 @@
           :class="[isCopiedToClipboard ? 'text-base' : 'text-xs']"
           class="px-3 grid place-items-center"
         >
-          <span v-if="!isCopiedToClipboard">{{ linksToShare }}</span>
+          <span v-if="!isCopiedToClipboard">{{
+            useMyUtils().useEllipsize(linksToShare, 45)
+          }}</span>
           <span v-else
             >Link{{ numLinks > 1 ? "s" : "" }} copied to clipboard!</span
           >
