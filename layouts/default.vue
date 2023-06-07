@@ -5,7 +5,7 @@
 
 <template>
   <header class="limit-width">
-    <MyAlert :type="alert.type" :msg="alert.msg" />
+    <MyAlert :type="alert.type" :msg="alert.msg" class="fixed top-2 left-2 right-2 mx-auto"/>
     <MyNavBar />
   </header>
   <div>

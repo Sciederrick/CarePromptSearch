@@ -10,7 +10,7 @@
       <MyAlert
         :type="alert.type"
         :msg="alert.msg"
-        class="fixed top-2 inset-x-0 mx-2 mx-auto"
+        class="fixed top-2 left-2 right-2 mx-auto"
       />
     </Transition>
     <MyNavBar />

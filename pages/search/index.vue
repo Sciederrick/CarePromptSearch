@@ -58,8 +58,8 @@
           Select all
         </label>
       </div>
-      <div :class="[isDropdownOpen ? 'absolute right-2 top-12 flex flex-col bg-white px-4 py-1 rounded-sm shadow-lg text-sm' : 'hidden']"
-        class="md:text-base md:flex md:flex-col md:shadow-none md:py-0 md:px-0 md:bg-transparent md:static md:border md:border-[--gray400] md:rounded-md lg:flex-row"
+      <div :class="[isDropdownOpen ? 'absolute right-2 top-12 flex flex-col bg-white px-4 py-1 rounded-sm shadow-lg' : 'hidden']"
+        class="md:flex md:flex-col md:shadow-none md:py-0 md:px-0 md:bg-transparent md:static md:border md:border-[--gray400] md:rounded-md lg:flex-row"
       >
         <SearchResultActions />
       </div>
