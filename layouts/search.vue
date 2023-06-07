@@ -16,11 +16,13 @@
     <MyNavBar />
   </header>
   <div>
+    <MyMobileNavDrawer />
     <slot />
   </div>
 </template>
 
 <style scoped>
+/* for alerts */
   .slide-fade-enter-active {
     transition: all 0.3s ease-out;
   }
@@ -34,4 +36,5 @@
     transform: translateY(-20px);
     opacity: 0;
   }
+
 </style>

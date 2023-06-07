@@ -30,7 +30,7 @@
 </script>
 
 <template>
-  <div class="fixed inset-0 backdrop-blur-sm backdrop-opacity-95 bg-white/30">
+  <div class="popup-background">
     <div class="max-w-md h-72 mx-4 mt-32 bg-white rounded-sm shadow-lg p-8 md:mx-auto">
       <header class="flex justify-between items-center">
         <p>Share {{ numLinks }} protocol{{ numLinks > 1 ? "s" : "" }} via:</p>

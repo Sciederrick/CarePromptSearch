@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { useToggleStore } from "~/store/toggle";
+
+  const { toggleMobileNavDrawer } = useToggleStore();
+</script>
 
 <template>
   <nav
@@ -12,8 +16,8 @@
       />
     </NuxtLink>
 
-    <button class="lg:hidden">
-      <Icon name="ri:menu-line" size="48px" color="#313131" />
+    <button class="lg:hidden" @click="toggleMobileNavDrawer">
+      <Icon name="jam:menu" size="48px" class="text-[--gray600]" />
     </button>
     <ul class="hidden lg:flex lg:justify-between lg:justify-self-center">
       <li
