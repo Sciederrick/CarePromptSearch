@@ -4,7 +4,7 @@ export const useToggleStore = defineStore("toggle-store", () => {
   const isSearchLoading = ref(false);
   const isShareModal = ref(false);
   const isMobileActionsDropdownOpen = ref(false);
-  const isMobileNavDrawerOpen = ref(true);
+  const isMobileNavDrawerOpen = ref(false);
 
   function setSearchLoading(state: boolean) {
     if (state == isSearchLoading.value) return;
@@ -23,8 +23,14 @@ export const useToggleStore = defineStore("toggle-store", () => {
     isMobileNavDrawerOpen.value = !isMobileNavDrawerOpen.value;
   }
 
-  return { isSearchLoading, setSearchLoading, 
-            isShareModal, toggleShareModal,
-            isMobileActionsDropdownOpen, toggleMobileActionsDropdown,
-            isMobileNavDrawerOpen, toggleMobileNavDrawer };
+  return {
+    isSearchLoading,
+    setSearchLoading,
+    isShareModal,
+    toggleShareModal,
+    isMobileActionsDropdownOpen,
+    toggleMobileActionsDropdown,
+    isMobileNavDrawerOpen,
+    toggleMobileNavDrawer,
+  };
 });
