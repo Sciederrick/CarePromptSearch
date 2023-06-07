@@ -11,7 +11,8 @@
   const { searchResult } = storeToRefs(searchStore);
 
   const toggleStore = useToggleStore();
-  const { isSearchLoading, isShareModal } = storeToRefs(toggleStore);
+  const { isSearchLoading, isShareModal, isMobileActionsDropdownOpen:isDropdownOpen } = storeToRefs(toggleStore);
+
 </script>
 
 <template>
@@ -45,7 +46,7 @@
     <LoadingWidget class="w-full" v-else />
     <aside
       :class="{ invisible: isSearchLoading }"
-      class="sticky top-2 inset-x-0 max-h-72 order-2 bg-[#d9d9d9] px-2 py-3 rounded flex justify-between md:visible md:order-first md:bg-[#ffffff] md:py-0 md:px-0 md:order-last md:flex-col md:justify-start md:items-center md:gap-y-8 md:py-4"
+      class="sticky top-2 inset-x-0 max-h-72 order-2 bg-[--blue300] px-2 py-3 rounded flex justify-between md:visible md:order-first md:bg-white md:py-0 md:px-0 md:order-last md:flex-col md:justify-start md:items-center md:gap-y-8 md:py-4"
     >
       <div class="flex items-center">
         <input
@@ -53,18 +54,18 @@
           id="checkbox"
           class="h-[20px] w-[20px]"
         />&nbsp;&nbsp;
-        <label class="text-xs text-[#838383]" for="checkbox">
+        <label class="text-xs text-[--gray600]" for="checkbox">
           Select all
         </label>
       </div>
-      <div
-        class="hidden md:border md:border-[#d9d9d9] md:rounded md:flex md:flex-col lg:flex-row"
+      <div :class="[isDropdownOpen ? 'absolute right-2 top-12 flex flex-col bg-white px-4 py-1 rounded-sm shadow-lg text-sm' : 'hidden']"
+        class="md:text-base md:flex md:flex-col md:shadow-none md:py-0 md:px-0 md:bg-transparent md:static md:border md:border-[--gray400] md:rounded-md lg:flex-row"
       >
         <SearchResultActions />
       </div>
       <p class="hidden md:block md:text-xs">0 selected</p>
-      <button class="md:hidden">
-        <Icon name="ep:more" size="32px" color="#313131" />
+      <button class="md:hidden" @click="isDropdownOpen=!isDropdownOpen">
+        <Icon name="ep:more" size="32px" class="text-[--dark]" />
       </button>
     </aside>
 
