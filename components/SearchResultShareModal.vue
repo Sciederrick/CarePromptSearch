@@ -5,10 +5,10 @@
 
   const { toggleShareModal } = useToggleStore();
   const protocolStore = useProtocolStore();
-  const { protocols } = storeToRefs(protocolStore);
+  const { selectedProtocols } = storeToRefs(protocolStore);
   const { baseURL } = useRuntimeConfig().public;
 
-  let mLinksToShare = protocols.value.map((id) =>
+  let mLinksToShare = selectedProtocols.value.map((id) =>
     baseURL.concat(`/search/${id}`)
   );
   let linksToShare = ref(mLinksToShare.join(" "));
@@ -31,7 +31,9 @@
 
 <template>
   <div class="popup-background">
-    <div class="max-w-md h-72 mx-4 mt-32 bg-white rounded-sm shadow-lg p-8 md:mx-auto">
+    <div
+      class="max-w-md h-72 mx-4 mt-32 bg-white rounded-sm shadow-lg p-8 md:mx-auto"
+    >
       <header class="flex justify-between items-center">
         <p>Share {{ numLinks }} protocol{{ numLinks > 1 ? "s" : "" }} via:</p>
         <button @click="toggleShareModal">

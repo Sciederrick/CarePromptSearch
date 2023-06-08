@@ -2,9 +2,9 @@
   import { storeToRefs } from "pinia";
   import { useToggleStore } from "~/store/toggle";
   import { useProtocolStore } from "~/store/protocol";
-  
+
   const { toggleShareModal, toggleMobileActionsDropdown } = useToggleStore();
-  const { protocols: selectedProtocols } = storeToRefs(useProtocolStore());
+  const { selectedProtocols } = storeToRefs(useProtocolStore());
 
   const isProtocolEmpty = computed(() => {
     return selectedProtocols.value.length == 0;
@@ -37,7 +37,7 @@
     <Icon name="material-symbols:bookmark-outline-rounded" />
     &nbsp;Save
   </button>
-  <hr class="my-1 md:hidden"/>
+  <hr class="my-1 md:hidden" />
   <button
     :disabled="isProtocolEmpty"
     :title="title"
