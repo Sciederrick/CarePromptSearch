@@ -8,14 +8,19 @@
   const { selectedProtocols } = storeToRefs(protocolStore);
   const { baseURL } = useRuntimeConfig().public;
 
-  let mLinksToShare = selectedProtocols.value.map((id) => {
-    return baseURL.concat(`/search/${id}`);
+  let linksToShare = computed(() => {
+    return selectedProtocols.value
+      .map((id) => {
+        console.log("link to ", id);
+        return baseURL.concat(`/search/${id}`);
+      })
+      .join(" ");
   });
-  let linksToShare = ref(mLinksToShare.join(" "));
+
   let isCopiedToClipboard = ref(false);
 
   const numLinks = computed(() => {
-    return linksToShare.value.split(" ").length;
+    return selectedProtocols.value.length;
   });
 
   const thisOrThese = computed(() => {

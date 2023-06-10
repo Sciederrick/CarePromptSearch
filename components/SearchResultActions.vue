@@ -2,25 +2,43 @@
   import { storeToRefs } from "pinia";
   import { useToggleStore } from "~/store/toggle";
   import { useProtocolStore } from "~/store/protocol";
+  import { useAlertStore } from "~/store/alert";
+  import { IAlertType } from "~/types/alert";
 
   const { toggleShareModal, toggleMobileActionsDropdown } = useToggleStore();
-  const { selectedProtocols } = storeToRefs(useProtocolStore());
+  const { numSelectedProtocols, selectedProtocols } = storeToRefs(
+    useProtocolStore()
+  );
+  const { modifyAlert } = useAlertStore();
 
-  const isProtocolEmpty = computed(() => {
-    return selectedProtocols.value.length == 0;
-  });
   const title = computed(() => {
-    return selectedProtocols.value.length == 0
+    return numSelectedProtocols.value == 0
       ? "you have not selected any protocol"
       : "do something with the protocol(s)";
   });
 
   function saveProtocols() {
+    if (numSelectedProtocols.value == 0) {
+      modifyAlert({
+        type: IAlertType.Warning,
+        msg: "You did not make any selection. Please make a selection first.",
+      });
+      toggleMobileActionsDropdown();
+      return;
+    }
     useSaveProtocols().add(selectedProtocols.value);
     toggleMobileActionsDropdown();
   }
 
   function shareProtocols() {
+    if (numSelectedProtocols.value == 0) {
+      modifyAlert({
+        type: IAlertType.Warning,
+        msg: "You did not make any selection. Please make a selection first.",
+      });
+      toggleMobileActionsDropdown();
+      return;
+    }
     toggleShareModal();
     toggleMobileActionsDropdown();
   }
@@ -28,9 +46,7 @@
 
 <template>
   <button
-    :disabled="isProtocolEmpty"
     :title="title"
-    :class="[isProtocolEmpty ? 'cursor-not-allowed' : 'cursor-pointer']"
     class="text-[--gray600] btn-hover-blue py-2"
     @click="saveProtocols"
   >
@@ -39,9 +55,7 @@
   </button>
   <hr class="my-1 md:hidden" />
   <button
-    :disabled="isProtocolEmpty"
     :title="title"
-    :class="[isProtocolEmpty ? 'cursor-not-allowed' : 'cursor-pointer']"
     class="text-[--gray600] btn-hover-blue py-2"
     @click="shareProtocols"
   >
