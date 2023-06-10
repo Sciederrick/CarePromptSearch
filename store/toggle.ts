@@ -16,7 +16,7 @@ export const useToggleStore = defineStore("toggle-store", () => {
   }
 
   function toggleMobileActionsDropdown() {
-    isMobileActionsDropdownOpen.value = !isMobileActionsDropdownOpen;
+    isMobileActionsDropdownOpen.value = !isMobileActionsDropdownOpen.value;
   }
 
   function toggleMobileNavDrawer() {

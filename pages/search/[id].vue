@@ -1,10 +1,11 @@
 <script setup lang="ts">
   import { storeToRefs } from "pinia";
   import { useSearchStore } from "~/store/search";
+  import { useToggleStore } from "~/store/toggle";
   import { IResult } from "~/types/search";
 
   definePageMeta({
-    layout: "search",
+    layout: "search-details",
   });
 
   const { id } = useRoute().params;
@@ -12,6 +13,9 @@
   const { searchResult, pictorialActiveStepPosition } =
     storeToRefs(searchStore);
   const { modifyPictorialActiveStepPosition } = searchStore;
+  const toggleStore = useToggleStore();
+  const { isShareModal } = toggleStore;
+
   const visiblePictorials = ref<Set<number>>(new Set());
   let result: IResult;
   if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
@@ -26,6 +30,9 @@
   });
   const activeStepDescription = computed(() => {
     return result.protocol[pictorialActiveStepPosition.value].split(":")[1];
+  });
+  const isImages = computed(() => {
+    return result.images.length > 0;
   });
 
   function makeActive(position: number) {
@@ -89,17 +96,17 @@
             <li
               class="border-b-4 border-b-[--blue900] md:border-b-[0.5px] md:py-4 md:border-b-[--gray100] md:text-[--blue700]"
             >
-              Protocol
+              <button>Protocol</button>
             </li>
             <li
-              class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-b-[--gray100] md:border-b-[0.5px] md:py-4"
+              class="border-b-4 border-b-[--gray100] text-[--gray600] md:py-4 md:border-b-[--gray100] md:border-b-[0.5px]"
             >
-              Decision matrix
+              <button>Decision matrix</button>
             </li>
             <li
-              class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-none md:py-4"
+              class="border-b-4 border-b-[--gray100] text-[--gray600] md:py-4 md:border-none"
             >
-              Diagnosis
+              <button>Diagnosis</button>
             </li>
           </ul>
         </nav>
@@ -110,7 +117,7 @@
         </aside>
       </div>
       <section
-        :class="[result.images.length > 0 ? 'md:grid-cols-3 lg:gap-x-8' : '']"
+        :class="[isImages ? 'md:grid-cols-3 lg:gap-x-8' : '']"
         class="py-8 order-first mb-32 md:relative md:grid md:py-0 md:pt-2 lg:flex"
       >
         <div
@@ -130,7 +137,7 @@
           />
         </div>
         <dl
-          :class="[result.images.length > 0 ? 'md:pl-8 md:col-span-2' : '']"
+          :class="[isImages ? 'md:pl-8 md:col-span-2' : '']"
           class="hidden md:pr-8 md:block md:h-screen md:sticky md:top-0"
         >
           <div
@@ -168,5 +175,6 @@
     <MyPageScrollTracker
       @handle-visible-target="modifyActivePictorial($event)"
     />
+    <SearchResultShareModal v-show="isShareModal" />
   </main>
 </template>

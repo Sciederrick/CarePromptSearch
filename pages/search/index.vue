@@ -17,6 +17,7 @@
     isShareModal,
     isMobileActionsDropdownOpen: isDropdownOpen,
   } = storeToRefs(toggleStore);
+  const { toggleMobileActionsDropdown } = toggleStore;
 
   const protocolStore = useProtocolStore();
   const { checkboxAll, numSelectedProtocols } = storeToRefs(protocolStore);
@@ -80,7 +81,7 @@
         <p class="hidden md:block md:text-xs">
           {{ numSelectedProtocols }} selected
         </p>
-        <button class="md:hidden" @click="isDropdownOpen = !isDropdownOpen">
+        <button class="md:hidden" @click="toggleMobileActionsDropdown">
           <Icon name="ep:more" size="32px" class="text-[--dark]" />
         </button>
       </aside>
