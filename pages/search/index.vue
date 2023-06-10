@@ -41,6 +41,7 @@
             searchResult.found > 0
           "
           class="cursor-pointer"
+          :id="res.document.id"
           :position="index"
           :title="res.document.title"
           :desc="res.document.description"

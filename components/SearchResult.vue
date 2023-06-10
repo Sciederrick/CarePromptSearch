@@ -1,12 +1,19 @@
 <script setup lang="ts">
+  import { storeToRefs } from "pinia";
+  import { useProtocolStore } from "~/store/protocol";
   const { useEllipsize } = useMyUtils();
+
   interface IResult {
+    id: string;
     title: string;
     desc: string;
     date: string;
     position: number;
   }
   const result = defineProps<IResult>();
+  const protocolStore = useProtocolStore();
+  const { checkboxes } = storeToRefs(protocolStore);
+  const { toggleCheckboxes } = protocolStore;
 
   async function seeResultDetails() {
     await navigateTo(`/search/${result.position}`);
@@ -17,7 +24,12 @@
   <div
     class="flex border-b border-[#D9D9D9] py-6 gap-x-3 md:max-w-xl lg:max-w-4xl lg:gap-x-6"
   >
-    <input type="checkbox" class="h-[20px] w-[20px] mt-1 lg:mt-2" />
+    <input
+      type="checkbox"
+      class="h-[20px] w-[20px] mt-1 lg:mt-2"
+      :checked="checkboxes[result.id]"
+      @click="toggleCheckboxes(result.id, checkboxes[result.id])"
+    />
     <div class="flex flex-col gap-y-2" @click="seeResultDetails">
       <h3 class="text-xl md:text-2xl">{{ result.title }}</h3>
       <p>{{ useEllipsize(result.desc, 125) }}</p>

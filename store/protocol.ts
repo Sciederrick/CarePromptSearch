@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useSearchStore } from "./search";
 
 export const useProtocolStore = defineStore("protocol-store", () => {
   const checkboxAll = ref(false);
@@ -10,7 +11,7 @@ export const useProtocolStore = defineStore("protocol-store", () => {
 
   function addProtocols() {
     const protocols = [];
-    for (const key in checkboxes) {
+    for (const key in checkboxes.value) {
       if (checkboxes.value[key]) {
         protocols.push(key);
       }
@@ -21,18 +22,26 @@ export const useProtocolStore = defineStore("protocol-store", () => {
   function toggleCheckboxAll() {
     checkboxAll.value = !checkboxAll.value;
     if (checkboxAll.value) {
-      // Go through search results and add them to checkboxes with a value of true on each
+      const searchStore = useSearchStore();
+      const { searchResult } = searchStore;
+
+      if (searchResult && searchResult.hits && searchResult?.hits?.length > 0) {
+        searchResult.hits.forEach((result) => {
+          const id = result.document.id;
+          checkboxes.value[id] = true;
+        });
+      }
     } else {
-      for (const key in checkboxes) {
-        if (checkboxes.value[key] == true) {
+      for (const key in checkboxes.value) {
+        if (checkboxes.value[key]) {
           checkboxes.value[key] = false;
         }
       }
     }
   }
 
-  function toggleCheckboxes(id: string, state: boolean = true) {
-    checkboxes.value[id] = state;
+  function toggleCheckboxes(id: string, currentState: boolean) {
+    checkboxes.value[id] = !currentState;
   }
 
   return {

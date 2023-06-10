@@ -8,9 +8,9 @@
   const { selectedProtocols } = storeToRefs(protocolStore);
   const { baseURL } = useRuntimeConfig().public;
 
-  let mLinksToShare = selectedProtocols.value.map((id) =>
-    baseURL.concat(`/search/${id}`)
-  );
+  let mLinksToShare = selectedProtocols.value.map((id) => {
+    return baseURL.concat(`/search/${id}`);
+  });
   let linksToShare = ref(mLinksToShare.join(" "));
   let isCopiedToClipboard = ref(false);
 
