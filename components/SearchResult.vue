@@ -9,7 +9,7 @@
   const result = defineProps<IResult>();
 
   async function seeResultDetails() {
-    await navigateTo(`/search/details/${result.position}`);
+    await navigateTo(`/search/${result.position}`);
   }
 </script>
 

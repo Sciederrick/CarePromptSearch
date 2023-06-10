@@ -78,77 +78,83 @@
 </script>
 
 <template>
-  <main class="p-2 relative md:flex md:justify-between lg:px-16 2xl:container">
-    <MyMainSearchInput class="pb-4 md:hidden" />
-    <div class="sticky top-0 z-10 md:h-screen md:pt-2">
-      <nav class="pt-1 bg-[--blue100] rounded-sm md:pt-0">
-        <ul
-          class="w-full p-2 pb-0 flex justify-between text-sm serif md:text-base md:flex-col md:pb-2"
-        >
-          <li
-            class="border-b-4 border-b-[--blue900] md:border-b-[0.5px] md:py-4 md:border-b-[--gray100] md:text-[--blue700]"
+  <main class="p-2 relative lg:px-16 2xl:container">
+    <MyMainSearchInput class="pb-8" />
+    <div class="md:flex md:justify-between">
+      <div class="sticky top-0 z-10 md:h-screen md:pt-2">
+        <nav class="pt-1 bg-[--blue100] rounded-sm md:pt-0">
+          <ul
+            class="w-full p-2 pb-0 flex justify-between text-sm serif md:text-base md:flex-col md:pb-2"
           >
-            Protocol
-          </li>
-          <li
-            class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-b-[--gray100] md:border-b-[0.5px] md:py-4"
-          >
-            Decision matrix
-          </li>
-          <li
-            class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-none md:py-4"
-          >
-            Diagnosis
-          </li>
-        </ul>
-      </nav>
-      <aside class="hidden md:block md:mt-10">
-        <div class="flex flex-col md:flex-row md:gap-x-8 md:gap-y-0">
-          <SearchResultActions />
-        </div>
-      </aside>
-    </div>
-    <section
-      class="py-8 order-first mb-32 md:relative md:grid md:grid-cols-3 md:py-0 md:pt-2 lg:flex lg:gap-x-8"
-    >
-      <div
-        class="flex flex-col items-center gap-y-16 md:items-start"
-        v-if="result"
-      >
-        <SearchResultImage
-          v-for="(img, index) in result.images"
-          :key="index"
-          data-observed="true"
-          :id="index"
-          :img="img"
-          :position="index"
-          :size="result.images.length"
-          :title="result.title"
-          :is-active="index == pictorialActiveStepPosition"
-        />
+            <li
+              class="border-b-4 border-b-[--blue900] md:border-b-[0.5px] md:py-4 md:border-b-[--gray100] md:text-[--blue700]"
+            >
+              Protocol
+            </li>
+            <li
+              class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-b-[--gray100] md:border-b-[0.5px] md:py-4"
+            >
+              Decision matrix
+            </li>
+            <li
+              class="border-b-4 border-b-[--gray100] text-[--gray600] md:border-none md:py-4"
+            >
+              Diagnosis
+            </li>
+          </ul>
+        </nav>
+        <aside class="hidden md:block md:mt-10">
+          <div class="flex flex-col md:flex-row md:gap-x-8 md:gap-y-0">
+            <SearchResultActions />
+          </div>
+        </aside>
       </div>
-      <dl
-        class="hidden md:block md:col-span-2 md:px-8 md:h-screen md:sticky md:top-0"
+      <section
+        :class="[result.images.length > 0 ? 'md:grid-cols-3 lg:gap-x-8' : '']"
+        class="py-8 order-first mb-32 md:relative md:grid md:py-0 md:pt-2 lg:flex"
       >
         <div
-          :class="[
-            pictorialActiveStepPosition == index ? 'opacity-100' : 'opacity-30',
-          ]"
-          class="flex gap-x-4 pb-4 cursor-pointer lg:max-w-lg"
-          v-for="(procedure, index) in result.protocol"
-          :key="index"
-          @click="makeActive(index)"
+          class="flex flex-col items-center gap-y-16 md:items-start"
+          v-if="result"
         >
-          <dt class="serif text-[--blue700] font-semibold text-xl">
-            {{ index + 1 }}
-          </dt>
-          <dd>
-            <span class="font-semibold">{{ procedure.split(":")[0] }}</span
-            >:{{ procedure.split(":")[1] }}
-          </dd>
+          <SearchResultImage
+            v-for="(img, index) in result.images"
+            :key="index"
+            data-observed="true"
+            :id="index"
+            :img="img"
+            :position="index"
+            :size="result.images.length"
+            :title="result.title"
+            :is-active="index == pictorialActiveStepPosition"
+          />
         </div>
-      </dl>
-    </section>
+        <dl
+          :class="[result.images.length > 0 ? 'md:pl-8 md:col-span-2' : '']"
+          class="hidden md:pr-8 md:block md:h-screen md:sticky md:top-0"
+        >
+          <div
+            :class="[
+              pictorialActiveStepPosition == index
+                ? 'opacity-100'
+                : 'opacity-30',
+            ]"
+            class="flex gap-x-4 pb-4 cursor-pointer lg:max-w-lg"
+            v-for="(procedure, index) in result.protocol"
+            :key="index"
+            @click="makeActive(index)"
+          >
+            <dt class="serif text-[--blue700] font-semibold text-xl">
+              {{ index + 1 }}
+            </dt>
+            <dd>
+              <span class="font-semibold">{{ procedure.split(":")[0] }}</span
+              >:{{ procedure.split(":")[1] }}
+            </dd>
+          </div>
+        </dl>
+      </section>
+    </div>
     <dl
       class="fixed inset-x-0 bottom-0 p-4 backdrop-blur-sm flex justify-center items-center gap-x-8 md:hidden"
     >
