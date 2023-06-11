@@ -35,7 +35,7 @@
 </script>
 
 <template>
-  <div class="popup-background">
+  <div class="popup-background z-20">
     <div
       class="max-w-md h-72 mx-4 mt-32 bg-white rounded-sm shadow-lg p-8 md:mx-auto"
     >

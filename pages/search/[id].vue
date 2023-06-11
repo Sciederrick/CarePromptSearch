@@ -2,6 +2,7 @@
   import { storeToRefs } from "pinia";
   import { useSearchStore } from "~/store/search";
   import { useToggleStore } from "~/store/toggle";
+  import { useProtocolStore } from "~/store/protocol";
   import { IResult } from "~/types/search";
 
   definePageMeta({
@@ -9,30 +10,57 @@
   });
 
   const { id } = useRoute().params;
+
   const searchStore = useSearchStore();
   const { searchResult, pictorialActiveStepPosition } =
     storeToRefs(searchStore);
-  const { modifyPictorialActiveStepPosition } = searchStore;
+  const { modifyPictorialActiveStepPosition, filterSearchResultById } =
+    searchStore;
+
   const toggleStore = useToggleStore();
-  const { isShareModal } = toggleStore;
+  const { isShareModal } = storeToRefs(toggleStore);
+
+  const protocolStore = useProtocolStore();
+  const { checkboxAll } = storeToRefs(protocolStore);
+  const { toggleCheckboxAll, toggleCheckboxes } = protocolStore;
 
   const visiblePictorials = ref<Set<number>>(new Set());
-  let result: IResult;
-  if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
-    result = searchResult.value.hits[parseInt(id as string)].document;
+  let result = ref<IResult>();
+
+  // init
+  async function getSearchResultById(): Promise<IResult | undefined> {
+    if (searchResult.value?.hits && searchResult.value.hits.length > 0) {
+      // get result locally
+      return filterSearchResultById(id as string) as unknown as IResult;
+    } else {
+      // get from typesense cloud
+      await useSearchTreatment(id as string);
+      return filterSearchResultById(id as string) as unknown as IResult;
+    }
   }
+
+  result.value = await getSearchResultById(); // Get protocol to display
+
+  if (checkboxAll.value) toggleCheckboxAll(); //reset select all
+  toggleCheckboxes(id as string, false); // set selection to the current protocol for save/share
+
+  // end init
 
   const activeStep = computed(() => {
     return pictorialActiveStepPosition.value + 1;
   });
   const activeStepInstruction = computed(() => {
-    return result.protocol[pictorialActiveStepPosition.value].split(":")[0];
+    return result.value?.protocol[pictorialActiveStepPosition.value].split(
+      ":"
+    )[0];
   });
   const activeStepDescription = computed(() => {
-    return result.protocol[pictorialActiveStepPosition.value].split(":")[1];
+    return result.value?.protocol[pictorialActiveStepPosition.value].split(
+      ":"
+    )[1];
   });
   const isImages = computed(() => {
-    return result.images.length > 0;
+    return result.value?.images?.length && result.value.images.length > 0;
   });
 
   function makeActive(position: number) {
@@ -46,7 +74,6 @@
       pictorialActiveStepPosition.value
     );
     if (!isActivePictorialVisible) {
-      console.log(`${pictorialActiveStepPosition.value} is not visible`);
       const smallestVisibleItem = getSmallestVisibleItem();
       const largestVisibleItem = getLargestVisibleItem();
       if (smallestVisibleItem > -1 && scrollDirection == "down") {

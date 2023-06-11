@@ -25,8 +25,6 @@ export const useProtocolStore = defineStore("protocol-store", () => {
     return protocols.length;
   });
 
-  function addProtocols() {}
-
   function toggleCheckboxAll() {
     checkboxAll.value = !checkboxAll.value;
     if (checkboxAll.value) {

@@ -6,7 +6,7 @@
 
 <template>
   <nav
-    class="pb-3 flex justify-between items-center my-4 border-b border-b-1 border-[--gray100]"
+    class="pb-3 flex justify-between items-center my-4 border-b border-dashed border-b-1 border-[--gray100]"
   >
     <NuxtLink to="/">
       <img

@@ -673,24 +673,33 @@ const errorDev = /*#__PURE__*/Object.freeze({
 });
 
 const search = defineEventHandler(async (event) => {
-  const { q } = getQuery$1(event);
-  const { typesenseHost, typesensePort, typesenseKey, typesenseProtocol, typesenseTimeoutSeconds } = useRuntimeConfig();
+  const { q, filter_by } = getQuery$1(event);
+  const {
+    typesenseHost,
+    typesensePort,
+    typesenseKey,
+    typesenseProtocol,
+    typesenseTimeoutSeconds
+  } = useRuntimeConfig();
   try {
     const client = new Client({
-      "nodes": [{
-        "host": typesenseHost,
-        "port": parseInt(typesensePort),
-        "protocol": typesenseProtocol
-      }],
-      "apiKey": typesenseKey,
-      "connectionTimeoutSeconds": parseInt(typesenseTimeoutSeconds)
+      nodes: [
+        {
+          host: typesenseHost,
+          port: parseInt(typesensePort),
+          protocol: typesenseProtocol
+        }
+      ],
+      apiKey: typesenseKey,
+      connectionTimeoutSeconds: parseInt(typesenseTimeoutSeconds)
     });
     if (!(q == null ? void 0 : q.toString().trim()))
       return;
     const res = await (client == null ? void 0 : client.collections("treatments").documents().search({
-      "q": q.toString(),
-      "query_by": "title,description,tags",
-      "sort_by": "rating:desc"
+      q: q.toString(),
+      query_by: "title,description,tags",
+      filter_by: filter_by && filter_by.toString().trim() ? filter_by.toString() : "",
+      sort_by: "rating:desc"
     }));
     return {
       success: true,

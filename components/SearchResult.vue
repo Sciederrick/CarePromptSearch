@@ -16,7 +16,7 @@
   const { toggleCheckboxes } = protocolStore;
 
   async function seeResultDetails() {
-    await navigateTo(`/search/${result.position}`);
+    await navigateTo(`/search/${result.id}`);
   }
 </script>
 
