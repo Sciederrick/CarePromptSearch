@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { storeToRefs } from "pinia";
   import { useProtocolStore } from "~/store/protocol";
+  import { useToggleStore } from "~/store/toggle";
   const { useEllipsize } = useMyUtils();
 
   interface IResult {
@@ -8,15 +9,30 @@
     title: string;
     desc: string;
     date: string;
-    position: number;
   }
   const result = defineProps<IResult>();
+
   const protocolStore = useProtocolStore();
   const { checkboxes } = storeToRefs(protocolStore);
-  const { toggleCheckboxes } = protocolStore;
+  const { toggleCheckboxes, setShareOneLink } = protocolStore;
+
+  const toggleStore = useToggleStore();
+  const { toggleMobileActionsDropdown, toggleShareModal } = toggleStore;
+  const { isMobileActionsDropdownOpen } = storeToRefs(toggleStore);
 
   async function seeResultDetails() {
     await navigateTo(`/search/${result.id}`);
+  }
+
+  function saveProtocol() {
+    useSaveProtocols().add([result.id]);
+    if (isMobileActionsDropdownOpen.value) toggleMobileActionsDropdown();
+  }
+
+  function shareProtocol() {
+    setShareOneLink(result.id);
+    toggleShareModal();
+    if (isMobileActionsDropdownOpen.value) toggleMobileActionsDropdown();
   }
 </script>
 
@@ -30,17 +46,19 @@
       :checked="checkboxes[result.id]"
       @click="toggleCheckboxes(result.id, checkboxes[result.id])"
     />
-    <div class="flex flex-col gap-y-2" @click="seeResultDetails">
-      <h3 class="text-xl md:text-2xl">{{ result.title }}</h3>
-      <p>{{ useEllipsize(result.desc, 125) }}</p>
+    <div class="flex flex-col gap-y-2">
+      <h3 class="text-xl md:text-2xl" @click="seeResultDetails">
+        {{ result.title }}
+      </h3>
+      <p @click="seeResultDetails">{{ useEllipsize(result.desc, 125) }}</p>
       <p class="text-xs text-[#838383]">
         {{ new Date(result.date).toLocaleDateString() }}
       </p>
       <div class="flex gap-4 text-[--gray600] text-sm pt-2">
-        <button class="btn-hover-blue">
+        <button class="btn-hover-blue" @click="shareProtocol">
           <Icon name="material-symbols:share-outline" />&nbsp;Share
         </button>
-        <button class="btn-hover-blue">
+        <button class="btn-hover-blue" @click="saveProtocol">
           <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;Save
         </button>
       </div>

@@ -5,22 +5,28 @@
 
   const { toggleShareModal } = useToggleStore();
   const protocolStore = useProtocolStore();
-  const { selectedProtocols } = storeToRefs(protocolStore);
+  const { selectedProtocols, oneLink } = storeToRefs(protocolStore);
+  const { resetOneLink } = protocolStore;
   const { baseURL } = useRuntimeConfig().public;
 
   let linksToShare = computed(() => {
-    return selectedProtocols.value
-      .map((id) => {
-        console.log("link to ", id);
-        return baseURL.concat(`/search/${id}`);
-      })
-      .join(" ");
+    let links: string;
+    if (oneLink.value != null) {
+      links = baseURL.concat(`/search/${oneLink.value}`);
+    } else {
+      links = selectedProtocols.value
+        .map((id) => {
+          return baseURL.concat(`/search/${id}`);
+        })
+        .join(" ");
+    }
+    return links;
   });
 
   let isCopiedToClipboard = ref(false);
 
   const numLinks = computed(() => {
-    return selectedProtocols.value.length;
+    return oneLink.value != null ? 1 : selectedProtocols.value.length;
   });
 
   const thisOrThese = computed(() => {
@@ -30,7 +36,12 @@
   function copyToClipBoard() {
     useMyUtils().copyTextToClipboard(linksToShare.value);
     isCopiedToClipboard.value = true;
-    setTimeout(() => (isCopiedToClipboard.value = false), 5000);
+    setTimeout(() => (isCopiedToClipboard.value = false), 3000);
+  }
+
+  function closeModal() {
+    if (oneLink.value) resetOneLink();
+    toggleShareModal();
   }
 </script>
 
@@ -41,7 +52,7 @@
     >
       <header class="flex justify-between items-center">
         <p>Share {{ numLinks }} protocol{{ numLinks > 1 ? "s" : "" }} via:</p>
-        <button @click="toggleShareModal">
+        <button @click="closeModal">
           <Icon name="uiw:close-square-o" size="24" />
         </button>
       </header>

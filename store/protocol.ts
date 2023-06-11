@@ -4,6 +4,7 @@ import { useSearchStore } from "./search";
 export const useProtocolStore = defineStore("protocol-store", () => {
   const checkboxAll = ref(false);
   const checkboxes = ref<{ [key: string]: boolean }>({});
+  const oneLink = ref<string | null>(null); // the id of the protocol to share
 
   const selectedProtocols = computed(() => {
     const protocols = [];
@@ -70,6 +71,14 @@ export const useProtocolStore = defineStore("protocol-store", () => {
     return true;
   }
 
+  function setShareOneLink(id: string) {
+    oneLink.value = id;
+  }
+
+  function resetOneLink() {
+    oneLink.value = null;
+  }
+
   return {
     numSelectedProtocols,
     selectedProtocols,
@@ -77,5 +86,8 @@ export const useProtocolStore = defineStore("protocol-store", () => {
     checkboxes,
     toggleCheckboxAll,
     toggleCheckboxes,
+    oneLink,
+    setShareOneLink,
+    resetOneLink,
   };
 });

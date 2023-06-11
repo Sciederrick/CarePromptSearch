@@ -42,7 +42,6 @@
           "
           class="cursor-pointer"
           :id="res.document.id"
-          :position="index"
           :title="res.document.title"
           :desc="res.document.description"
           :date="res.document.updated_at"
