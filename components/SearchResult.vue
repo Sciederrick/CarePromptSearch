@@ -47,11 +47,13 @@
       @click="toggleCheckboxes(result.id, checkboxes[result.id])"
     />
     <div class="flex flex-col gap-y-2">
-      <h3 class="text-xl md:text-2xl" @click="seeResultDetails">
+      <h3 class="text-xl select-none md:text-2xl" @click="seeResultDetails">
         {{ result.title }}
       </h3>
-      <p @click="seeResultDetails">{{ useEllipsize(result.desc, 125) }}</p>
-      <p class="text-xs text-[#838383]">
+      <p class="select-none" @click="seeResultDetails">
+        {{ useEllipsize(result.desc, 125) }}
+      </p>
+      <p class="text-xs text-[#838383] select-none">
         {{ new Date(result.date).toLocaleDateString() }}
       </p>
       <div class="flex gap-4 text-[--gray600] text-sm pt-2">

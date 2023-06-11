@@ -6,7 +6,11 @@
 <template>
   <header class="limit-width">
     <Transition name="slide-fade">
-      <MyAlert :type="alert.type" :msg="alert.msg" class="fixed top-2 left-2 right-2 mx-auto"/>
+      <MyAlert
+        :type="alert.type"
+        :msg="alert.msg"
+        class="fixed top-2 left-2 right-2 mx-auto"
+      />
     </Transition>
     <MyNavBar />
   </header>
@@ -84,7 +88,7 @@
 </template>
 
 <style scoped>
-/* for alerts */
+  /* for alerts */
   .slide-fade-enter-active {
     transition: all 0.3s ease-out;
   }
@@ -98,5 +102,4 @@
     transform: translateX(-20px);
     opacity: 0;
   }
-
 </style>

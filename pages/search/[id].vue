@@ -202,6 +202,24 @@
     <MyPageScrollTracker
       @handle-visible-target="modifyActivePictorial($event)"
     />
-    <SearchResultShareModal v-show="isShareModal" />
+    <Transition name="slide-fade">
+      <SearchResultShareModal v-show="isShareModal" />
+    </Transition>
   </main>
 </template>
+<style scoped>
+  /* for share modal */
+  .slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+  }
+
+  .slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+</style>
