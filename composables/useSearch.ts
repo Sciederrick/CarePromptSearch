@@ -23,7 +23,6 @@ export async function useSearchTreatment(id: string | null = null) {
       );
       data = mData;
     } else {
-      console.log("id: ", id);
       const { data: mData } = await useFetch(
         `/api/search?q=*&filter_by=id:=${id}`
       );

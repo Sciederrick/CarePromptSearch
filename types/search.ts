@@ -1,75 +1,78 @@
 export interface ISearchInput {
-    'q': string,
-    'query_by': string,
-    'sort_by': string
+  q: string;
+  query_by: string;
+  sort_by: string;
 }
 
 export interface IResponse {
-    facet_counts: any[]
-    found: number
-    hits: IHit[]|[]
-    out_of: number
-    page: number
-    request_params: IRequestParams
-    search_cutoff: boolean
-    search_time_ms: number
+  facet_counts: any[];
+  found: number;
+  hits: IHit[] | [];
+  out_of: number;
+  page: number;
+  request_params: IRequestParams;
+  search_cutoff: boolean;
+  search_time_ms: number;
 }
-  
+
 export interface IHit {
-    document: IResult
-    highlight: IHighlight
-    highlights: IHighlight2[]
-    text_match: number
-    text_match_info: ITextMatchInfo
+  document: IResult;
+  highlight: IHighlight;
+  highlights: IHighlight2[];
+  text_match: number;
+  text_match_info: ITextMatchInfo;
 }
 
 export interface IResult {
-    content_type: string
-    created_at: number
-    description: string
-    id: string
-    images: string[]
-    protocol: string[]
-    rating: number
-    tags: string[]
-    title: string
-    updated_at: number
-    videos: any[]
+  content_type: string;
+  created_at: number;
+  description: string;
+  id: string;
+  images: string[];
+  protocol: string[];
+  decision_matrix: string;
+  diagnosis: string;
+  rating: number;
+  tags: string[];
+  title: string;
+  updated_at: number;
+  videos: any[];
+  authors: string[];
 }
 
 export interface IHighlight {
-    title: ITitle
+  title: ITitle;
 }
 
 export interface ITitle {
-    matched_tokens: string[]
-    snippet: string
+  matched_tokens: string[];
+  snippet: string;
 }
 
 export interface IHighlight2 {
-    field: string
-    matched_tokens: string[]
-    snippet: string
+  field: string;
+  matched_tokens: string[];
+  snippet: string;
 }
 
 export interface ITextMatchInfo {
-    best_field_score: string
-    best_field_weight: number
-    fields_matched: number
-    score: string
-    tokens_matched: number
+  best_field_score: string;
+  best_field_weight: number;
+  fields_matched: number;
+  score: string;
+  tokens_matched: number;
 }
 
 export interface IRequestParams {
-    collection_name: string
-    per_page: number
-    q: string
+  collection_name: string;
+  per_page: number;
+  q: string;
 }
 
 export interface IConfig {
-    host: string,
-    port: number,
-    protocol: string,
-    apiKey: string,
-    timeout: number
+  host: string;
+  port: number;
+  protocol: string;
+  apiKey: string;
+  timeout: number;
 }
