@@ -82,114 +82,53 @@
           </p>
         </div>
       </div>
-
-      <div class="pb-24 md:flex md:gap-x-16 md:items-center lg:gap-x-32">
-        <div>
-          <h2 class="heading-2">
-            We believe protocols should be clear, concise and to the point.
-          </h2>
-          <div class="py-2">
-            <p>
-              We plan to create content that is easy to consume in any
-              situation:
-            </p>
-            <ul class="list-disc list-inside">
-              <li>Detailed & concise</li>
-              <li>Peer reviewed</li>
-              <li>Open-sourced</li>
-            </ul>
-            <p>
-              This will make obstetric interventions easier to navigate reducing
-              the number of mortalities.
-            </p>
-          </div>
-
-          <dl class="flex gap-8">
-            <div class="text-center">
-              <dt class="serif font-bold">100+</dt>
-              <dd class="text-xs">protocols</dd>
-            </div>
-            <div class="text-center">
-              <dt class="serif font-bold">20+</dt>
-              <dd class="text-xs">contributions</dd>
-            </div>
-            <div class="text-center">
-              <dt class="serif font-bold">20+</dt>
-              <dd class="text-xs">users</dd>
-            </div>
-          </dl>
-        </div>
-        <img
-          src="~/assets/images/reading.webp"
-          class="img-bordered my-4 md:w-1/3"
-          draggable="false"
-          alt=""
-        />
-      </div>
-
-      <div class="max-w-lg mx-auto text-center grid gap-y-4 pb-24">
-        <SocialProof2 />
+    </section>
+    <section
+      class="py-24 md:flex md:gap-x-16 md:items-center lg:gap-x-32 limit-width"
+    >
+      <div>
         <h2 class="heading-2">
-          Welcoming creative contributors to grow our knowledge repository.
+          We believe protocols should be clear, concise and to the point.
         </h2>
-        <p>
-          Creating medical protocols is no mean task. We are looking for
-          talented doctors to join our movement.
-        </p>
-        <div>
-          <button class="btn btn-blue">
-            <Icon
-              name="fluent:people-community-16-regular"
-              size="24px"
-            />&nbsp;Join us
-          </button>
+        <div class="py-2">
+          <p>
+            We plan to create content that is easy to consume in any situation:
+          </p>
+          <ul class="list-disc list-inside">
+            <li>Detailed & concise</li>
+            <li>Peer reviewed</li>
+            <li>Open-sourced</li>
+          </ul>
+          <p>
+            This will make obstetric interventions easier to navigate reducing
+            the number of mortalities.
+          </p>
         </div>
-      </div>
-    </section>
-    <!-- Testimonials -->
-    <section class="py-24 limit-width">
-      <h2 class="heading-2 text-center">Testimonials</h2>
 
-      <div
-        class="gap-x-8 py-8 overflow-x-auto flex md:justify-between snap-x scroll-smooth"
-      >
-        <div
-          class="grid gap-y-4 min-w-[300px] md:min-w-[0px]"
-          v-for="i in 3"
-          :key="i"
-        >
-          <blockquote>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque
-            omnis vitae impedit laboriosam quas similique placeat deserunt
-            quisquam quaerat explicabo.
-          </blockquote>
-
-          <div class="flex items-center gap-4">
-            <img
-              src="~/assets/images/doctor.webp"
-              width="50"
-              height="50"
-              class="rounded-full object-cover w-[45px] h-[45px]"
-              alt=""
-            />
-            <ul class="text-xs">
-              <li class="pb-1">Dr. Jane Doe</li>
-              <li>Medical Doctor</li>
-            </ul>
+        <dl class="flex gap-8">
+          <div class="text-center">
+            <dt class="serif font-bold">__</dt>
+            <dd class="text-xs">protocols</dd>
           </div>
-        </div>
+          <div class="text-center">
+            <dt class="serif font-bold">__</dt>
+            <dd class="text-xs">contributions</dd>
+          </div>
+          <div class="text-center">
+            <dt class="serif font-bold">__</dt>
+            <dd class="text-xs">users</dd>
+          </div>
+        </dl>
       </div>
-      <ul class="flex justify-end gap-4 md:hidden">
-        <li>
-          <div class="w-8 h-3 rounded-sm bg-[--blue700]"></div>
-        </li>
-        <li>
-          <div class="w-4 h-3 rounded-sm bg-[--gray600]"></div>
-        </li>
-        <li>
-          <div class="w-4 h-3 rounded-sm bg-[--gray600]"></div>
-        </li>
-      </ul>
+      <img
+        src="~/assets/images/reading.webp"
+        class="img-bordered my-4 md:w-1/3"
+        draggable="false"
+        alt=""
+      />
     </section>
+    <div class="popup-background pt-32" v-if="false">
+      <LoadingWidget />
+    </div>
   </main>
 </template>

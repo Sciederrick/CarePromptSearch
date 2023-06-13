@@ -10,12 +10,17 @@
   } = searchStore;
   let { isMainSearchInputInFocus, searchTerm } = storeToRefs(searchStore);
   let inputSearchTerm = searchTerm;
+
+  const isLoading = ref(false);
+
   const route = useRoute();
 
   async function performSearch() {
     if (inputSearchTerm.value.trim() != "") {
+      isLoading.value = true;
       modifySearchTerm(inputSearchTerm.value);
       await useSearchTreatment();
+      isLoading.value = false;
     }
     if (route.name != "search") await navigateTo("/search");
   }
@@ -42,16 +47,20 @@
         @focusout="removeFocusToMainSeachInput"
         @keyup.enter="performSearch"
         v-model="inputSearchTerm"
-        class="text-input w-full text-[#313131]"
+        class="text-input w-full text-[--dark]"
         type="text"
         placeholder="Search"
       />
       <button
         type="submit"
-        class="btn btn-blue my-1"
+        class="relative btn btn-blue my-1"
         @click.prevent="performSearch"
       >
-        search
+        <span :class="[isLoading ? 'invisible' : 'visible']">search</span>
+        <LoadingWidget2
+          class="absolute inset-x-0 top-0 bottom-0"
+          :class="[isLoading ? 'visible' : 'invisible']"
+        />
       </button>
     </div>
   </form>

@@ -27,7 +27,7 @@
         <Icon
           name="ph:caret-circle-down"
           class="text-[--gray600]"
-        />&nbsp;save/share
+        />&nbsp;unsave/share
       </button>
     </div>
     <div
@@ -51,8 +51,8 @@
         <NuxtLink class="btn btn-transparent-blue" to="/">home</NuxtLink>
       </li>
       <li class="lg:pl-4">
-        <NuxtLink class="btn btn-transparent-blue" to="/bookmarks"
-          >bookmarks</NuxtLink
+        <NuxtLink class="btn btn-transparent-blue" to="/search"
+          >search</NuxtLink
         >
       </li>
     </ul>

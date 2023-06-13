@@ -134,6 +134,6 @@
   }
 
   .badge {
-    @apply bg-[--alertSuccess] text-white rounded-lg p-1 text-xs;
+    @apply serif bg-[--alertSuccess] text-white rounded-lg p-1 text-xs;
   }
 }
