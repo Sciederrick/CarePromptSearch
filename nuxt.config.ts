@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         },
       ],
     },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   runtimeConfig: {
     typesenseKey: process.env.TYPESENSE_KEY,

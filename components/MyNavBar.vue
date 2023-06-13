@@ -23,10 +23,15 @@
       <li
         class="lg:pr-4 lg:block lg:border-r lg:border-r-1 lg:border-[--gray100]"
       >
-        <NuxtLink class="btn btn-transparent-blue" to="/">contribute</NuxtLink>
+        <NuxtLink class="btn btn-transparent-blue" to="/search"
+          >search</NuxtLink
+        >
       </li>
       <li class="lg:pl-4">
-        <NuxtLink class="btn btn-transparent-blue" to="/about">login</NuxtLink>
+        <NuxtLink class="btn btn-transparent-blue" to="/bookmarks">
+          <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;
+          bookmarks</NuxtLink
+        >
       </li>
     </ul>
   </nav>

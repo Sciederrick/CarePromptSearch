@@ -132,4 +132,8 @@
   .popup-background {
     @apply fixed inset-0 backdrop-blur-sm backdrop-opacity-95 bg-white/30;
   }
+
+  .badge {
+    @apply bg-[--alertSuccess] text-white rounded-lg p-1 text-xs;
+  }
 }

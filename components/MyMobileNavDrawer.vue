@@ -6,7 +6,7 @@
   const { isMobileNavDrawerOpen: isOpen } = storeToRefs(toggleStore);
   const { toggleMobileNavDrawer } = toggleStore;
 
-  async function goTo(route: "home" | "search") {
+  async function goTo(route: "home" | "search" | "bookmarks") {
     toggleMobileNavDrawer();
     if (route == "home") {
       setTimeout(async () => {
@@ -15,6 +15,10 @@
     } else if (route == "search") {
       setTimeout(async () => {
         await navigateTo("/search");
+      }, 1000);
+    } else if (route == "bookmarks") {
+      setTimeout(async () => {
+        await navigateTo("/bookmarks");
       }, 1000);
     }
   }
@@ -57,12 +61,9 @@
           </ul>
           <hr />
           <div class="p-4 pt-8">
-            <button
-              class="btn btn-blue w-full cursor-not-allowed"
-              title="coming soon"
-              disabled="true"
-            >
-              Contribute
+            <button class="w-full text-left" @click="goTo('bookmarks')">
+              <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;
+              Bookmarks
             </button>
           </div>
         </div>

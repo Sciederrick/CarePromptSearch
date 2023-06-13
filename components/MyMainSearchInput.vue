@@ -24,7 +24,7 @@
 <template>
   <form class="w-full" @submit.prevent="">
     <div
-      class="flex items-center rounded w-full mx-auto px-4"
+      class="flex items-center rounded w-full mx-auto pl-4 pr-1"
       :class="{
         'border-2': isMainSearchInputInFocus,
         'border-[--blue900]': isMainSearchInputInFocus,
@@ -46,6 +46,13 @@
         type="text"
         placeholder="Search"
       />
+      <button
+        type="submit"
+        class="btn btn-blue my-1"
+        @click.prevent="performSearch"
+      >
+        search
+      </button>
     </div>
   </form>
 </template>

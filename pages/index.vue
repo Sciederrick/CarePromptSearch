@@ -3,7 +3,10 @@
     <!-- Hero section -->
     <section class="py-24 grid gap-y-4 place-content-center limit-width">
       <header class="text-center">
-        <p class="text-xs">Search tool for reference & emergency care</p>
+        <p class="text-xs">
+          Search tool for reference & emergency care
+          <span class="badge" title="beta testing">beta</span>
+        </p>
         <h1 class="heading-1">CarePrompt Search</h1>
       </header>
       <MyMainSearchInput class="w-full mx-auto lg:min-w-[760px]" />
