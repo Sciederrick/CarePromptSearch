@@ -7,6 +7,7 @@
 
   definePageMeta({
     layout: "search-details",
+    middleware: "reset-toggles",
   });
 
   const tabs = [

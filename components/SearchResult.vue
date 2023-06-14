@@ -60,7 +60,11 @@
         <button class="btn-hover-blue" @click="shareProtocol">
           <Icon name="material-symbols:share-outline" />&nbsp;Share
         </button>
-        <button class="btn-hover-blue" @click="saveProtocol">
+        <button
+          class="text-[--gray400] cursor-not-allowed"
+          title="view for saved protocols not yet available"
+          @click="saveProtocol"
+        >
           <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;Save
         </button>
       </div>

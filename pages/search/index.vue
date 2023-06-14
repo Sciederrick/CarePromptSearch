@@ -6,6 +6,7 @@
 
   definePageMeta({
     layout: "search",
+    middleware: "reset-toggles",
   });
 
   const searchStore = useSearchStore();

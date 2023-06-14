@@ -10,7 +10,7 @@
   >
     <NuxtLink to="/">
       <img
-        src="~/assets/images/logo-black-transparent.png"
+        src="~/assets/images/logo-color-transparent.png"
         width="175"
         alt="company logo"
       />

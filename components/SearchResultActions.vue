@@ -46,8 +46,8 @@
 
 <template>
   <button
-    :title="title"
-    class="text-[--gray600] btn-hover-blue py-2"
+    class="text-[--gray600] py-2 text-[--gray400] cursor-not-allowed"
+    title="view for saved protocol not yet available"
     @click="saveProtocols"
   >
     <Icon name="material-symbols:bookmark-outline-rounded" />

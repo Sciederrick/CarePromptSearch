@@ -20,7 +20,7 @@
       <slot />
     </div>
     <footer class="bg-[--blue300] py-8 limit-width">
-      <div class="flex flex-col flex-wrap gap-16 md:flex-row">
+      <div class="flex flex-col flex-wrap gap-4 md:gap-16 md:flex-row">
         <NuxtLink to="/">
           <img
             src="~/assets/images/logo-black-transparent.png"
