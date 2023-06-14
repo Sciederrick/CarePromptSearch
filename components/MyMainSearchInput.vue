@@ -49,7 +49,7 @@
         v-model="inputSearchTerm"
         class="text-input w-full text-[--dark]"
         type="text"
-        placeholder="Search"
+        placeholder="Try '*' or 'breech delivery' .."
       />
       <button
         type="submit"

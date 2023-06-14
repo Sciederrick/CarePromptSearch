@@ -11,7 +11,7 @@
 <template>
   <div class="popup-background z-20" v-show="isDisclaimer">
     <div
-      class="max-w-md h-[340px] mx-4 mt-32 bg-white rounded-sm shadow-lg border-t-4 border-[--blue700] border-dotted p-8 md:h-80 md:mx-auto"
+      class="max-w-md h-[360px] mx-4 mt-32 bg-white rounded-sm shadow-lg border-t-4 border-[--blue700] border-dotted p-8 md:h-80 md:mx-auto"
     >
       <header class="flex justify-between items-center">
         <h2>Important notice</h2>
