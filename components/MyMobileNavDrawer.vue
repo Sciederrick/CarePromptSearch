@@ -61,7 +61,11 @@
           </ul>
           <hr />
           <div class="p-4 pt-8">
-            <button class="w-full text-left" @click="goTo('bookmarks')">
+            <button
+              class="w-full text-left"
+              @click="goTo('bookmarks')"
+              disabled
+            >
               <Icon
                 name="material-symbols:bookmark-outline-rounded"
                 class="text-[--gray400]"

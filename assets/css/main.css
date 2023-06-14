@@ -109,7 +109,7 @@
     @apply object-cover rounded-full border-2 border-[#fff6e7] h-[48px] w-[48px];
   }
   .img-container {
-    @apply w-[200px] h-[200px] border-4 border-dashed rounded-xl lg:w-[320px] lg:h-[320px];
+    @apply w-[280px] h-[240px] border-4 border-dashed rounded-xl lg:w-[320px] lg:h-[320px];
   }
   .limit-width {
     @apply px-2 lg:px-16 2xl:container 2xl:mx-auto;

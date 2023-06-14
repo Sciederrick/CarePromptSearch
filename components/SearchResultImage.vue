@@ -31,7 +31,7 @@
   <div class="relative cursor-pointer" @click="makeActive">
     <img
       :class="[isActive ? 'border-[--blue900]' : 'border-[--gray100]']"
-      class="object-cover img-container"
+      class="object-fit img-container"
       :src="imgURL"
       :alt="`image ${positionTitle} showcasing ${title}`"
     />
