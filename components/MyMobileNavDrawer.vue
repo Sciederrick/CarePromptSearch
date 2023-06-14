@@ -62,8 +62,14 @@
           <hr />
           <div class="p-4 pt-8">
             <button class="w-full text-left" @click="goTo('bookmarks')">
-              <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;
-              Bookmarks
+              <Icon
+                name="material-symbols:bookmark-outline-rounded"
+                class="text-[--gray400]"
+              />&nbsp;&nbsp;
+              <span class="text-[--gray400]">Bookmarks</span>&nbsp;<span
+                class="badge"
+                >coming soon</span
+              >
             </button>
           </div>
         </div>

@@ -52,7 +52,7 @@
               <NuxtLink to="https://appwrite.io">
                 <img
                   src="~/assets/images/appwrite_logo.svg"
-                  class="object-fit max-w-[160px] max-h-[20px]"
+                  class="object-fit max-w-[160px] max-h-[16px]"
                   alt="Appwrite logo"
                 />
               </NuxtLink>
@@ -61,7 +61,7 @@
               <NuxtLink to="https://typesense.org">
                 <img
                   src="~/assets/images/typesense_logo.svg"
-                  class="object-fit max-w-[160px] max-h-[20px]"
+                  class="object-fit max-w-[160px] max-h-[16px]"
                   alt="Typesense logo"
                 />
               </NuxtLink>
