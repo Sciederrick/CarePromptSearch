@@ -20,7 +20,7 @@
       <slot />
     </div>
     <footer class="bg-[--blue300] py-8 limit-width">
-      <div class="flex flex-col flex-wrap gap-8 md:flex-row md:gap-12">
+      <div class="flex flex-col flex-wrap gap-16 md:flex-row">
         <NuxtLink to="/">
           <img
             src="~/assets/images/logo-black-transparent.png"
@@ -30,58 +30,43 @@
           />
         </NuxtLink>
         <section>
-          <h3>Company</h3>
+          <h3>Quick Links</h3>
           <ul class="py-2">
-            <li class="pb-1">
-              <NuxtLink to="#">Terms & Conditions</NuxtLink>
+            <li class="py-2">
+              <NuxtLink to="/search">Search</NuxtLink>
             </li>
-            <li class="pb-1">
-              <NuxtLink to="#">About us</NuxtLink>
+            <li class="py-2">
+              <NuxtLink
+                to="#"
+                class="text-[--gray400] cursor-not-allowed"
+                title="coming soon"
+                >Bookmarks</NuxtLink
+              >
             </li>
           </ul>
         </section>
         <section>
-          <h3>Contacts</h3>
+          <h3>Powered by</h3>
           <ul class="py-2">
-            <li class="pb-1">
-              <NuxtLink to="#">johndoe@example.com</NuxtLink>
+            <li class="py-2">
+              <NuxtLink to="https://appwrite.io">
+                <img
+                  src="~/assets/images/appwrite_logo.svg"
+                  class="object-fit max-w-[160px] max-h-[20px]"
+                  alt="Appwrite logo"
+                />
+              </NuxtLink>
             </li>
-            <li class="pb-1">
-              <NuxtLink to="#">+254 733 333 333</NuxtLink>
+            <li class="py-2">
+              <NuxtLink to="https://typesense.org">
+                <img
+                  src="~/assets/images/typesense_logo.svg"
+                  class="object-fit max-w-[160px] max-h-[20px]"
+                  alt="Typesense logo"
+                />
+              </NuxtLink>
             </li>
           </ul>
-        </section>
-        <section>
-          <h3>Subscribe</h3>
-          <p class="py-2">
-            Receive product and protocol updates, <br />patient stories in your
-            inbox
-          </p>
-          <form class="pt-1">
-            <div
-              class="grid border border-[--gray400] px-1 py-1 rounded-sm bg-[--blue300] md:inline-block"
-            >
-              <input
-                class="px-3 outline-none bg-transparent"
-                type="email"
-                placeholder="Your email address"
-              />
-              <button class="btn btn-blue mt-2 md:mt-0">Subscribe</button>
-            </div>
-          </form>
-        </section>
-        <section
-          class="flex gap-4 text-[--gray600] text-xs lg:flex-col lg:items-start"
-        >
-          <button class="py-2">
-            <Icon name="jam:twitter-circle" size="32px" />&nbsp;Twitter
-          </button>
-          <button class="py-2">
-            <Icon name="jam:facebook-circle" size="32px" />&nbsp;Facebook
-          </button>
-          <button class="py-2">
-            <Icon name="jam:linkedin-circle" size="32px" />&nbsp;Linkedin
-          </button>
         </section>
       </div>
       <p class="text-sm pt-16">copyright &copy; 2023 CarePrompt</p>
