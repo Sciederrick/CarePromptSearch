@@ -92,7 +92,7 @@
     </div>
     <dl
       :class="[isImages ? 'md:pl-8 md:col-span-2' : '']"
-      class="hidden md:pr-8 md:block md:h-screen md:sticky md:top-0"
+      class="hidden md:pr-8 md:block md:h-screen md:sticky md:top-0 md:overflow-y-scroll"
     >
       <div
         :class="[
