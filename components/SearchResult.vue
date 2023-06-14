@@ -51,7 +51,7 @@
         {{ result.title }}
       </h3>
       <p class="select-none" @click="seeResultDetails">
-        {{ useEllipsize(result.desc, 125) }}
+        {{ result.desc }}
       </p>
       <p class="text-xs text-[#838383] select-none">
         {{ new Date(result.date).toLocaleDateString() }}

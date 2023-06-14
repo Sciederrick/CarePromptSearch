@@ -23,12 +23,14 @@
       <li
         class="lg:pr-4 lg:block lg:border-r lg:border-r-1 lg:border-[--gray100]"
       >
-        <NuxtLink class="btn btn-transparent-blue" to="/search"
-          >search</NuxtLink
-        >
+        <NuxtLink class="btn" to="/search">search</NuxtLink>
       </li>
       <li class="lg:pl-4">
-        <NuxtLink class="btn btn-transparent-blue" to="/bookmarks">
+        <NuxtLink
+          class="btn text-[--gray400] cursor-not-allowed"
+          title="coming soon"
+          to="/bookmarks"
+        >
           <Icon name="material-symbols:bookmark-outline-rounded" />&nbsp;
           bookmarks</NuxtLink
         >
